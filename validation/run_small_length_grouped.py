@@ -6,7 +6,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 BASE = "acf8004ec93d3d3195ea4945c693ff1c8959374e"
-HEAD = "1eddf5f04def93161551c61db6514e80642bc47a"
+HEAD = "29f8350bd70881f6badf4a4d62d6e58cbc7b9238"
 SOURCE = "src/transformers/trainer_pt_utils.py"
 TESTS = "tests/trainer/test_trainer_data.py"
 ROOT = Path.cwd()
