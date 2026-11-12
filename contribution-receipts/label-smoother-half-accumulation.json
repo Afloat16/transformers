@@ -1,0 +1,30 @@
+{
+  "repository": "huggingface/transformers",
+  "fork": "Afloat16/transformers",
+  "title": "Prevent half-precision overflow when reducing label smoothing losses",
+  "body": "## Problem\n\n`LabelSmoother` already sums the uniform smoothing term in float32, but the NLL term is still reduced in the logits dtype. With sufficiently many valid tokens, an FP16 sum overflows even though the normalized loss is finite. BF16 accumulation also loses avoidable precision before normalization. This affects label smoothing over long token batches produced by half-precision models.\n\n## Change\n\nAccumulate the NLL term in float32 for FP16 and BF16 inputs. Preserve float32 and float64 reduction precision, label shifting, ignored-token masking, and the caller-provided full-batch denominator.\n\n## Validation\n\nNative PyTorch 2.14.0 CPU, repository test configuration:\n\n- 30 new tests cover FP16/BF16 reductions, inferred and external integer/tensor counts, shifted labels, ignored labels, smoothing factors 0 and 0.1, and float32/float64 controls.\n- Original source: 26 failures and 4 passes.\n- Patched source: all 32 tests in `TrainerLabelSmoothingTest` pass.\n- Real FP16 and BF16 tiny GPT-2 models each complete two SGD updates. Losses match an independent reference using native unreduced NLL with float32 accumulation; all parameter gradients and updated parameters match exactly.\n- Ruff 0.15.9 checks and formatting pass.\n\nExact production head: `70f2d58479c7f204648bfad1a67a08435d453e72`.\nhttps://github.com/Afloat16/transformers/actions/runs/43305917064\n",
+  "branch": "fix/label-smoother-half-accumulation-20261112",
+  "head": "70f2d58479c7f204648bfad1a67a08435d453e72",
+  "base": "acf8004ec93d3d3195ea4945c693ff1c8959374e",
+  "tree": "0ac7616849ba8f040831a4c9ecac90aa602d74ef",
+  "publication": "branch_pushed_pr_creation_blocked",
+  "create_pr_response": {
+    "error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#create-a-pull-request\",\"status\":\"403\"}",
+    "error_code": "FORBIDDEN",
+    "error_data": {
+      "message": "Resource not accessible by integration",
+      "documentation_url": "https://docs.github.com/rest/pulls/pulls#create-a-pull-request",
+      "status": "403"
+    }
+  },
+  "prefilled_url": "https://github.com/huggingface/transformers/compare/main...Afloat16:fix/label-smoother-half-accumulation-20261112?expand=1&title=Prevent%20half-precision%20overflow%20when%20reducing%20label%20smoothing%20losses&body=%23%23%20Problem%0A%0A%60LabelSmoother%60%20already%20sums%20the%20uniform%20smoothing%20term%20in%20float32%2C%20but%20the%20NLL%20term%20is%20still%20reduced%20in%20the%20logits%20dtype.%20With%20sufficiently%20many%20valid%20tokens%2C%20an%20FP16%20sum%20overflows%20even%20though%20the%20normalized%20loss%20is%20finite.%20BF16%20accumulation%20also%20loses%20avoidable%20precision%20before%20normalization.%20This%20affects%20label%20smoothing%20over%20long%20token%20batches%20produced%20by%20half-precision%20models.%0A%0A%23%23%20Change%0A%0AAccumulate%20the%20NLL%20term%20in%20float32%20for%20FP16%20and%20BF16%20inputs.%20Preserve%20float32%20and%20float64%20reduction%20precision%2C%20label%20shifting%2C%20ignored-token%20masking%2C%20and%20the%20caller-provided%20full-batch%20denominator.%0A%0A%23%23%20Validation%0A%0ANative%20PyTorch%202.14.0%20CPU%2C%20repository%20test%20configuration%3A%0A%0A-%2030%20new%20tests%20cover%20FP16%2FBF16%20reductions%2C%20inferred%20and%20external%20integer%2Ftensor%20counts%2C%20shifted%20labels%2C%20ignored%20labels%2C%20smoothing%20factors%200%20and%200.1%2C%20and%20float32%2Ffloat64%20controls.%0A-%20Original%20source%3A%2026%20failures%20and%204%20passes.%0A-%20Patched%20source%3A%20all%2032%20tests%20in%20%60TrainerLabelSmoothingTest%60%20pass.%0A-%20Real%20FP16%20and%20BF16%20tiny%20GPT-2%20models%20each%20complete%20two%20SGD%20updates.%20Losses%20match%20an%20independent%20reference%20using%20native%20unreduced%20NLL%20with%20float32%20accumulation%3B%20all%20parameter%20gradients%20and%20updated%20parameters%20match%20exactly.%0A-%20Ruff%200.15.9%20checks%20and%20formatting%20pass.%0A%0AExact%20production%20head%3A%20%6070f2d58479c7f204648bfad1a67a08435d453e72%60.%0Ahttps%3A%2F%2Fgithub.com%2FAfloat16%2Ftransformers%2Factions%2Fruns%2F43305917064%0A",
+  "validation": {
+    "url": "https://github.com/Afloat16/transformers/actions/runs/43305917064",
+    "new_tests": 30,
+    "baseline_failed": 26,
+    "baseline_passed": 4,
+    "after_passed": 32,
+    "torch": "2.14.0+cpu"
+  },
+  "merged_at": null
+}
