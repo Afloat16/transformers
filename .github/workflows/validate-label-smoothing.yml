@@ -36,7 +36,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: label-smoothing-ffec8ecea10c
+          name: label-smoothing-70f2d58479c7
           path: |
             before.log
             before.xml
