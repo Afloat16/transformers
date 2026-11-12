@@ -1,0 +1,64 @@
+name: Validate multiple-choice NumPy collation
+on:
+  push:
+    branches: [validation/multiple-choice-numpy-20261112]
+permissions:
+  contents: read
+jobs:
+  native-collators:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OMP_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cfb813eb70e312ff1a91a5726d52236b3827713c
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native CPU dependencies
+        run: |
+          python -m pip install 'torch==2.9.1' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e . 'pytest>=9,<10' pytest-xdist pytest-env parameterized psutil rich timeout-decorator accelerate
+      - name: Verify baseline regression fails for the expected missing NumPy call
+        run: |
+          git restore --source acf8004ec93d3d3195ea4945c693ff1c8959374e -- src/transformers/data/data_collator.py
+          set +e
+          python -m pytest tests/trainer/test_data_collator.py -k TestDataCollatorForMultipleChoice -q -p xdist.plugin -p pytest_env.plugin > baseline.log 2>&1
+          baseline_status=$?
+          set -e
+          cat baseline.log
+          test "$baseline_status" -eq 1
+          python - <<'PYCODE'
+          from pathlib import Path
+          text = Path('baseline.log').read_text()
+          assert '13 failed' in text, text
+          assert "has no attribute 'numpy_call'" in text, text
+          assert 'ERROR collecting' not in text, text
+          PYCODE
+          git restore --source cfb813eb70e312ff1a91a5726d52236b3827713c -- src/transformers/data/data_collator.py
+      - name: Run complete native collator test module including multiworker data loaders
+        run: python -m pytest tests/trainer/test_data_collator.py -q -p xdist.plugin -p pytest_env.plugin
+      - name: Verify NumPy collation without importing PyTorch
+        env:
+          USE_TORCH: '0'
+        run: |
+          python - <<'PYCODE'
+          import sys
+          import numpy as np
+          from transformers import BertTokenizer, DataCollatorForMultipleChoice
+          tokenizer = BertTokenizer(vocab={'[PAD]': 0, '[UNK]': 1, '[CLS]': 2, '[SEP]': 3, '[MASK]': 4})
+          batch = DataCollatorForMultipleChoice(tokenizer, return_tensors='np')([
+              {'input_ids': [[2, 3], [2, 1, 3]], 'label': 1},
+          ])
+          assert all(isinstance(value, np.ndarray) for value in batch.values())
+          np.testing.assert_array_equal(batch['input_ids'], [[[2, 3, 0], [2, 1, 3]]])
+          np.testing.assert_array_equal(batch['labels'], [1])
+          assert batch['labels'].dtype == np.int64
+          assert 'torch' not in sys.modules
+          print('NumPy-only collation passed without importing PyTorch')
+          PYCODE
