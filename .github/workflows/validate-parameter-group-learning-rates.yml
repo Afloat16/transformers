@@ -1,0 +1,45 @@
+name: Validate per-group absolute learning rates
+on:
+  push:
+    branches: [validation/parameter-group-learning-rates-20261112]
+permissions:
+  contents: read
+jobs:
+  native-schedulers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OMP_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 6cb160b49beefcb922bc7f0b158094be1000ca74
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native CPU dependencies
+        run: |
+          python -m pip install 'torch==2.9.1' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e . 'pytest>=9,<10' pytest-xdist pytest-env parameterized psutil rich timeout-decorator accelerate datasets
+      - name: Verify unchanged upstream fails the new schedule and Trainer regressions
+        run: |
+          git restore --source acf8004ec93d3d3195ea4945c693ff1c8959374e -- src/transformers/optimization.py
+          set +e
+          python -m pytest tests/optimization/test_optimization.py tests/trainer/test_trainer_optimizers.py -k 'AbsoluteLearningRateScheduleTest or test_absolute_minimum_with_custom_parameter_groups' -q -p xdist.plugin -p pytest_env.plugin > baseline.log 2>&1
+          baseline_status=$?
+          set -e
+          cat baseline.log
+          test "$baseline_status" -eq 1
+          python - <<'PYCODE'
+          from pathlib import Path
+          text = Path('baseline.log').read_text()
+          assert '16 failed' in text, text
+          assert 'ERROR collecting' not in text, text
+          assert 'AssertionError' in text, text
+          PYCODE
+          git restore --source 6cb160b49beefcb922bc7f0b158094be1000ca74 -- src/transformers/optimization.py
+      - name: Run full optimizer and Trainer optimizer test modules
+        run: python -m pytest tests/optimization tests/trainer/test_trainer_optimizers.py -q -p xdist.plugin -p pytest_env.plugin
