@@ -7,7 +7,7 @@
   "head": "70f2d58479c7f204648bfad1a67a08435d453e72",
   "base": "acf8004ec93d3d3195ea4945c693ff1c8959374e",
   "tree": "0ac7616849ba8f040831a4c9ecac90aa602d74ef",
-  "publication": "branch_pushed_pr_creation_blocked",
+  "publication": "pull_request_created",
   "create_pr_response": {
     "error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#create-a-pull-request\",\"status\":\"403\"}",
     "error_code": "FORBIDDEN",
@@ -26,5 +26,13 @@
     "after_passed": 32,
     "torch": "2.14.0+cpu"
   },
-  "merged_at": null
+  "merged_at": null,
+  "pull_request": {
+    "number": 50699,
+    "url": "https://github.com/huggingface/transformers/pull/50699",
+    "state": "open",
+    "head": "70f2d58479c7f204648bfad1a67a08435d453e72",
+    "merged_at": null,
+    "maintainer_can_modify": false
+  }
 }
