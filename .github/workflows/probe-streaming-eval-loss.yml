@@ -1,0 +1,29 @@
+name: Probe native streaming evaluation loss
+on:
+  push:
+    branches: [validation/streaming-eval-loss-probe-20261113]
+permissions:
+  contents: read
+jobs:
+  default-gpt2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OMP_NUM_THREADS: "2"
+      TOKENIZERS_PARALLELISM: "false"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v10.3.3
+      - name: Install native CPU dependencies
+        run: |
+          uv venv .venv
+          uv pip install --python .venv/bin/python torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          uv pip install --python .venv/bin/python -e . accelerate datasets scipy scikit-learn
+      - name: Compare map and streaming datasets with a default GPT2 model
+        run: .venv/bin/python validation/probe_streaming_eval_loss.py
