@@ -1,0 +1,53 @@
+name: Validate streamed evaluation loss weighting
+on:
+  push:
+    branches: [validation/streaming-evaluation-tail-loss-weight-20261113]
+permissions:
+  contents: read
+jobs:
+  native-trainer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OMP_NUM_THREADS: "2"
+      TOKENIZERS_PARALLELISM: "false"
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+      RUN_SLOW: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v10.3.3
+      - name: Install native CPU and quality dependencies
+        run: |
+          uv venv .venv
+          uv pip install --python .venv/bin/python torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          uv pip install --python .venv/bin/python -e ".[quality]" "pytest>=9,<10" pytest-xdist pytest-env parameterized psutil rich timeout-decorator accelerate datasets scipy scikit-learn
+      - name: Run original and fixed native Trainer workflows
+        run: .venv/bin/python validation/run_streaming_eval_loss.py
+      - name: Run repository style command
+        if: always()
+        run: |
+          export PATH="$PWD/.venv/bin:$PATH"
+          make style
+          git diff --exit-code -- src/transformers/trainer.py tests/trainer/test_trainer_data.py
+      - name: Preserve native validation evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: trainer-streaming-loss-native
+          path: |
+            before.log
+            before.xml
+            after.log
+            after.xml
+            existing.log
+            existing.xml
+            default_gpt2_before.log
+            default_gpt2_after.log
+            validation_result.json

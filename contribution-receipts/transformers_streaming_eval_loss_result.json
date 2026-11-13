@@ -1,0 +1,58 @@
+{
+  "repository": "huggingface/transformers",
+  "stars": 168938,
+  "title": "Fix loss weighting for short iterable evaluation batches",
+  "base": "main",
+  "base_commit": "41f9d3992023970fb5a463e70d56232506c80fbc",
+  "branch": "fix/streaming-evaluation-tail-loss-weight-20261113",
+  "commit": "bbfc2fe3c40a2d017f52934a6cb0d43aeee4710c",
+  "commit_url": "https://github.com/Afloat16/transformers/commit/bbfc2fe3c40a2d017f52934a6cb0d43aeee4710c",
+  "prefilled_pr_url": "https://github.com/huggingface/transformers/compare/main...Afloat16:transformers:fix/streaming-evaluation-tail-loss-weight-20261113?expand=1&title=Fix%20loss%20weighting%20for%20short%20iterable%20evaluation%20batches&body=%23%23%20What%20does%20this%20PR%20do%3F%0A%0AUse%20each%20observed%20evaluation%20batch%20size%20when%20expanding%20its%20mean%20loss%20before%20gathering.%0A%0AWith%20an%20unknown-length%20iterable%20dataset%20and%20%60accelerator_config%3D%7B%22dispatch_batches%22%3A%20False%7D%60%2C%20the%20final%20batch%20can%20be%20shorter%20than%20the%20configured%20batch%20size.%20Its%20mean%20loss%20is%20currently%20repeated%20for%20a%20full%20batch.%20Accelerate%20cannot%20trim%20this%20unknown-length%20loader%20by%20a%20known%20dataset%20remainder%2C%20so%20the%20tail%20is%20overweighted%20in%20both%20%60evaluate()%60%20and%20%60predict()%60.%0A%0AThe%20existing%20configured-size%20fallback%20remains%20for%20inputs%20whose%20batch%20size%20cannot%20be%20inferred.%20Gathering%2C%20accumulation%2C%20and%20the%20reduction%20of%20model%20losses%20are%20unchanged.%0A%0A%23%23%20Reproduction%20and%20validation%0A%0ANative%20CPU%20validation%3A%20https%3A%2F%2Fgithub.com%2FAfloat16%2Ftransformers%2Factions%2Fruns%2F43406792756%0A%0A-%20New%20regression%20in%20the%20existing%20iterable%20Trainer%20suite%3A%20original%20code%20has%20**2%20failing%20and%2010%20passing%20subcases**%3B%20the%20fix%20passes%20all%20**12%20subcases**.%20These%20cover%20actual%20%60evaluate()%60%2F%60predict()%60%2C%20an%20independent%20MSE%20reference%2C%20dispatch%20enabled%2Fdisabled%2C%20accumulation%20enabled%2Fdisabled%2C%20and%20batch%20sizes%201%2C%203%2C%20and%208%20for%20seven%20examples.%0A-%20Four%20existing%20evaluation%2Fprediction%20tests%20pass%2C%20including%20the%20existing%20iterable%20tests.%0A-%20A%20separate%20real%20workflow%20uses%20an%20unmodified%20default%20%60GPT2Config()%60%2C%20%60GPT2LMHeadModel%60%2C%20%60Trainer%60%2C%20and%20the%20same%20Hugging%20Face%20%60Dataset%60%20converted%20with%20%60to_iterable_dataset()%60.%20With%20batch%20size%203%20and%20seven%20examples%3A%0A%0A%7C%20Loader%20%7C%20Original%20loss%20%7C%20Fixed%20loss%20%7C%0A%7C%20---%20%7C%20---%3A%20%7C%20---%3A%20%7C%0A%7C%20Map-style%2C%20dispatch%20disabled%20%7C%209.6250963211%20%7C%209.6250963211%20%7C%0A%7C%20Iterable%2C%20dispatch%20disabled%20%7C%209.5590667725%20%7C%209.6250963211%20%7C%0A%7C%20Iterable%2C%20dispatch%20enabled%20%7C%209.6250963211%20%7C%209.6250963211%20%7C%0A%0AThe%20GPT-2%20check%20uses%20locally%20initialized%20weights%20and%20verifies%20evaluation%20aggregation%3B%20it%20is%20not%20a%20model-quality%20benchmark.%20Validation%20ran%20on%20CPU%2C%20without%20distributed%20or%20GPU%20claims.%0A%0ACommands%3A%0A%60%60%60bash%0Apython%20-m%20pytest%20tests%2Ftrainer%2Ftest_trainer_data.py%3A%3ATrainerDynamicShapesAndIterableTest%3A%3Atest_iterable_evaluation_loss_uses_actual_batch_size%20-q%0Apython%20-m%20pytest%20tests%2Ftrainer%2Ftest_trainer_data.py%3A%3ATrainerDynamicShapesAndIterableTest%3A%3Atest_evaluation_iterable_dataset%20tests%2Ftrainer%2Ftest_trainer_data.py%3A%3ATrainerDynamicShapesAndIterableTest%3A%3Atest_predict_iterable_dataset%20tests%2Ftrainer%2Ftest_trainer_evaluation.py%3A%3ATrainerEvaluationTest%3A%3Atest_evaluate%20tests%2Ftrainer%2Ftest_trainer_evaluation.py%3A%3ATrainerEvaluationTest%3A%3Atest_predict%20-q%0Amake%20style%0A%60%60%60%0A%0AFull%20%60make%20style%60%20passes%2C%20with%205%2C108%20files%20unchanged.%0A%0A%23%23%20Related%20work%0A%0AThis%20is%20a%20standalone%20reproduction.%20The%20existing%20batch-size%20fix%20in%20%2316763%20selected%20the%20configured%20total%20batch%20size%20for%20data%20parallelism.%20The%20Accelerate%20migration%20in%20%2324028%20removed%20the%20old%20final%20truncation%20of%20losses%20and%20delegated%20gathering%20to%20Accelerate%3B%20this%20patch%20instead%20makes%20each%20local%20loss%20expansion%20match%20the%20batch%20that%20produced%20it.%20Related%20evaluation-loop%20changes%20and%20current%20open%2Fclosed%20PRs%20were%20checked%20for%20the%20same%20fix.%0A",
+  "body": "## What does this PR do?\n\nUse each observed evaluation batch size when expanding its mean loss before gathering.\n\nWith an unknown-length iterable dataset and `accelerator_config={\"dispatch_batches\": False}`, the final batch can be shorter than the configured batch size. Its mean loss is currently repeated for a full batch. Accelerate cannot trim this unknown-length loader by a known dataset remainder, so the tail is overweighted in both `evaluate()` and `predict()`.\n\nThe existing configured-size fallback remains for inputs whose batch size cannot be inferred. Gathering, accumulation, and the reduction of model losses are unchanged.\n\n## Reproduction and validation\n\nNative CPU validation: https://github.com/Afloat16/transformers/actions/runs/43406792756\n\n- New regression in the existing iterable Trainer suite: original code has **2 failing and 10 passing subcases**; the fix passes all **12 subcases**. These cover actual `evaluate()`/`predict()`, an independent MSE reference, dispatch enabled/disabled, accumulation enabled/disabled, and batch sizes 1, 3, and 8 for seven examples.\n- Four existing evaluation/prediction tests pass, including the existing iterable tests.\n- A separate real workflow uses an unmodified default `GPT2Config()`, `GPT2LMHeadModel`, `Trainer`, and the same Hugging Face `Dataset` converted with `to_iterable_dataset()`. With batch size 3 and seven examples:\n\n| Loader | Original loss | Fixed loss |\n| --- | ---: | ---: |\n| Map-style, dispatch disabled | 9.6250963211 | 9.6250963211 |\n| Iterable, dispatch disabled | 9.5590667725 | 9.6250963211 |\n| Iterable, dispatch enabled | 9.6250963211 | 9.6250963211 |\n\nThe GPT-2 check uses locally initialized weights and verifies evaluation aggregation; it is not a model-quality benchmark. Validation ran on CPU, without distributed or GPU claims.\n\nCommands:\n```bash\npython -m pytest tests/trainer/test_trainer_data.py::TrainerDynamicShapesAndIterableTest::test_iterable_evaluation_loss_uses_actual_batch_size -q\npython -m pytest tests/trainer/test_trainer_data.py::TrainerDynamicShapesAndIterableTest::test_evaluation_iterable_dataset tests/trainer/test_trainer_data.py::TrainerDynamicShapesAndIterableTest::test_predict_iterable_dataset tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_evaluate tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict -q\nmake style\n```\n\nFull `make style` passes, with 5,108 files unchanged.\n\n## Related work\n\nThis is a standalone reproduction. The existing batch-size fix in #16763 selected the configured total batch size for data parallelism. The Accelerate migration in #24028 removed the old final truncation of losses and delegated gathering to Accelerate; this patch instead makes each local loss expansion match the batch that produced it. Related evaluation-loop changes and current open/closed PRs were checked for the same fix.\n",
+  "pr_created": false,
+  "pr_status": "ready_permission_fallback",
+  "pr_url": null,
+  "merged_at": null,
+  "counts_as_merged": false,
+  "pr_creation_error": "GitHub API error 403: {\"message\":\"Resource not accessible by integration\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#create-a-pull-request\",\"status\":\"403\"}",
+  "validation": {
+    "run_url": "https://github.com/Afloat16/transformers/actions/runs/43406792756",
+    "run_id": 43406792756,
+    "job_id": 131822962211,
+    "validation_branch": "validation/streaming-evaluation-tail-loss-weight-20261113",
+    "validation_commit": "85e27b6499b25dabb920962c82ad3b98433872a2",
+    "status": "success",
+    "baseline": "2 failing, 10 passing subcases; parent method reported 1 passed",
+    "fixed": "1 method and all 12 subcases pass",
+    "existing": "4 existing evaluation/prediction tests pass",
+    "default_gpt2": {
+      "configuration": "unmodified GPT2Config() and locally initialized GPT2LMHeadModel; real Dataset.to_iterable_dataset and Trainer CPU",
+      "baseline_map": 9.625096321105957,
+      "baseline_iterable_dispatch_false": 9.559066772460938,
+      "patched_all": 9.625096321105957
+    },
+    "quality": "Full make style passes; Ruff 0.14.10; 5108 files unchanged",
+    "broader": "CPU only; no distributed/GPU or pretrained model quality claim."
+  },
+  "dedup": {
+    "fork_heads": 24,
+    "trainer_file_history_catalog": 1017,
+    "actual_related_pr_diffs": [
+      16763,
+      11286,
+      24028,
+      26060,
+      34343,
+      50172,
+      47164,
+      30267
+    ],
+    "explanation": "16763 changes configured DP batch size; 24028 removes final loss truncation with Accelerate migration; no current or historic matching observed-tail expansion found in reviewed related changes and searches."
+  },
+  "review": {
+    "agent": "existing_prs",
+    "source": "bbfc2fe3c40a2d017f52934a6cb0d43aeee4710c",
+    "status": "passed",
+    "notes": "Observed batch count matches the scalar batch mean and this batch's labels/logits; None fallback and gather/accumulation unchanged."
+  }
+}
