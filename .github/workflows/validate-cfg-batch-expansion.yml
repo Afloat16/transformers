@@ -1,0 +1,48 @@
+name: Validate native CFG batch expansion
+on:
+  push:
+    branches: [validation/cfg-negative-prompt-batch-expansion-20261113]
+permissions:
+  contents: read
+jobs:
+  native-optimizer-group:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: "2"
+      TOKENIZERS_PARALLELISM: "false"
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+      RUN_SLOW: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 8
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v6
+      - name: Install native CPU dependencies
+        run: |
+          uv venv .venv
+          uv pip install --python .venv/bin/python torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          uv pip install --python .venv/bin/python -e . "pytest>=9,<10" pytest-xdist pytest-env parameterized psutil rich timeout-decorator accelerate datasets scipy scikit-learn "ruff==0.15.9"
+      - name: Reproduce the original failure and validate exact source
+        run: .venv/bin/python validation/run_cfg_batch_expansion.py
+      - name: Check changed files
+        if: always()
+        run: |
+          .venv/bin/ruff check src/transformers/generation/utils.py tests/generation/test_cfg_batch_expansion.py
+          .venv/bin/ruff format --diff src/transformers/generation/utils.py tests/generation/test_cfg_batch_expansion.py
+      - name: Preserve native test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cfg-batch-expansion-2ae942fc7197
+          path: |
+            before.log
+            before.xml
+            after.log
+            after.xml
+            validation_result.json
+            existing.log
+            existing.xml
