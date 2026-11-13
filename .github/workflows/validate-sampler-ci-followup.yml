@@ -1,0 +1,52 @@
+name: Validate sampler CI follow-up
+on:
+  push:
+    branches: [validation/length-grouped-ci-followup-20261113]
+permissions:
+  contents: read
+jobs:
+  native-sampler:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: "2"
+      TOKENIZERS_PARALLELISM: "false"
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+      RUN_SLOW: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: validation
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: d6a9829826927f13543ccc3e93a74ba2cde0aae3
+          path: candidate
+          fetch-depth: 8
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v6
+      - name: Install native CPU dependencies
+        working-directory: candidate
+        run: |
+          uv venv .venv
+          uv pip install --python .venv/bin/python torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          uv pip install --python .venv/bin/python -e . "pytest>=9,<10" pytest-xdist pytest-env parameterized psutil rich timeout-decorator accelerate datasets scipy scikit-learn "ruff==0.15.9" "bandit==1.9.4"
+      - name: Validate exact candidate and worker deadlines
+        working-directory: candidate
+        run: .venv/bin/python ../validation/validation/run_sampler_ci_followup.py
+      - name: Run required style and verify unchanged source
+        working-directory: candidate
+        run: |
+          source .venv/bin/activate
+          make style
+          git diff --exit-code
+          git diff --check
+      - name: Preserve test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sampler-ci-followup-d6a982982692
+          path: evidence/
