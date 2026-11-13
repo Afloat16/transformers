@@ -9,7 +9,7 @@ HEAD = "bf9a3cbe64372541b9be46b691f033301e6fc1b8"
 SOURCE = "src/transformers/trainer_pt_utils.py"
 TESTS = "tests/trainer/test_trainer_evaluation.py"
 TARGET = TESTS + "::TrainerEvaluationTest::test_predict_preprocessed_float8_logits"
-subprocess.run(["git", "fetch", "--no-tags", "--depth=1", "origin", BASE, HEAD], check=True)
+subprocess.run(["git", "fetch", "--no-tags", "origin", BASE, HEAD], check=True)
 for path in (SOURCE, TESTS):
     assert Path(path).read_bytes() == subprocess.check_output(["git", "show", f"{HEAD}:{path}"]), path
 
