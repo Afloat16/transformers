@@ -1,0 +1,102 @@
+[
+  {
+    "branch": "audit/cfg-negative-prompt-batch-expansion-20261113",
+    "sha": "9fe8b7159fd6c4031260f3431a4af27b74c385e3",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "audit/label-smoother-half-accumulation-20261112",
+    "sha": "550ac07ee22c86b8226151becb0c88023846b770",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "audit/trainer-core-fixes-20261113",
+    "sha": "60777c4da955d6ddf0a69664bb3dd7908465ce2e",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "fix/cfg-negative-prompt-batch-expansion-20261113",
+    "sha": "3bf25ca148b65b52f3c6849d86c3084205a03c5c",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "fix/empty-label-smoothing-loss-20261112",
+    "sha": "f1af5a0d1993eb58304db4ebe61daec35ba4a132",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "fix/label-smoother-half-accumulation-20261112",
+    "sha": "70f2d58479c7f204648bfad1a67a08435d453e72",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "fix/length-grouped-tiny-distributed-datasets-20261112",
+    "sha": "d6a9829826927f13543ccc3e93a74ba2cde0aae3",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "fix/multiple-choice-numpy-batches-20261112",
+    "sha": "cfb813eb70e312ff1a91a5726d52236b3827713c",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "fix/parameter-group-absolute-learning-rates-20261112",
+    "sha": "6cb160b49beefcb922bc7f0b158094be1000ca74",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "fix/trainer-optimizer-group-identity-20261112",
+    "sha": "d7b21da91ac1f4aae5276869762853508475ed00",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "main",
+    "sha": "e2427469e44082e1105593310dd09c3ed0e0e64a",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "perf/seq2seq-array-label-batches-20261112",
+    "sha": "708763e7fe0c2627bf2305442bd324d571e82187",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/cfg-negative-prompt-batch-expansion-20261113",
+    "sha": "2a0bdd0a80e8c22639d388978407bcd887657779",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/label-smoother-half-accumulation-20261112",
+    "sha": "b0186b65956aed5fab86b508209c6919803ba4da",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/length-grouped-ci-followup-20261113",
+    "sha": "c5471bcf42f2e3e407dbaf59950ff00c121af172",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/length-grouped-tiny-distributed-datasets-20261112",
+    "sha": "a4373d7eace69a0fde30a2dd53993288777f2374",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/multiple-choice-numpy-20261112",
+    "sha": "ff7f2a8924a85de862f9731e8829c8698ad29c57",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/parameter-group-learning-rates-20261112",
+    "sha": "6eed9de0495388fc4552041bef6becf5e3b2f4a8",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/seq2seq-array-label-batches-20261112",
+    "sha": "d4f32181e9a3482a093ff1c7eea2ab4cffbb6f79",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  },
+  {
+    "branch": "validation/trainer-optimizer-group-identity-20261112",
+    "sha": "2bd93106a8e0f1584c7de76d93bddbbf29513b53",
+    "function": "def nested_numpify(tensors):\n    \"Numpify `tensors` (even if it's a nested list/tuple/dict of tensors).\"\n    if isinstance(tensors, (list, tuple)):\n        return type(tensors)(nested_numpify(t) for t in tensors)\n    if isinstance(tensors, Mapping):\n        return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})\n\n    t = tensors.cpu()\n    if t.dtype == torch.bfloat16:\n        # As of Numpy 1.21.4, NumPy does not support bfloat16 (see\n        # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).\n        # Until Numpy adds bfloat16, we must convert float32.\n        t = t.to(torch.float32)\n    return t.numpy()\n\n"
+  }
+]

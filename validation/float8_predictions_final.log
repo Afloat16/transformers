@@ -1,0 +1,1354 @@
+﻿2026-11-13T09:56:00.4825356Z Current runner version: '2.338.2'
+2026-11-13T09:56:00.4863217Z ##[group]Runner Image Provisioner
+2026-11-13T09:56:00.4865396Z Hosted Compute Agent
+2026-11-13T09:56:00.4866481Z Version: 20261028.624
+2026-11-13T09:56:00.4867733Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+2026-11-13T09:56:00.4869117Z Build Date: 2026-10-28T21:51:42Z
+2026-11-13T09:56:00.4870458Z Worker ID: {94e960b7-ae82-4f9c-8fa6-36001dc4cd34}
+2026-11-13T09:56:00.4871983Z Region: westcentralus
+2026-11-13T09:56:00.4873154Z Cloud: Azure
+2026-11-13T09:56:00.4874636Z ##[endgroup]
+2026-11-13T09:56:00.4876927Z ##[group]Operating System
+2026-11-13T09:56:00.4878049Z Ubuntu
+2026-11-13T09:56:00.4879251Z 24.04.5
+2026-11-13T09:56:00.4880219Z LTS
+2026-11-13T09:56:00.4881365Z ##[endgroup]
+2026-11-13T09:56:00.4882419Z ##[group]Runner Image
+2026-11-13T09:56:00.4883833Z Image: ubuntu-24.04
+2026-11-13T09:56:00.4885057Z Version: 20261101.360.1
+2026-11-13T09:56:00.4887168Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-13T09:56:00.4890793Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+2026-11-13T09:56:00.4892680Z ##[endgroup]
+2026-11-13T09:56:00.4895108Z ##[group]GITHUB_TOKEN Permissions
+2026-11-13T09:56:00.4897971Z Contents: read
+2026-11-13T09:56:00.4899049Z Metadata: read
+2026-11-13T09:56:00.4899934Z ##[endgroup]
+2026-11-13T09:56:00.4904154Z Secret source: Actions
+2026-11-13T09:56:00.4905794Z Cache mode: write
+2026-11-13T09:56:00.4907399Z Prepare workflow directory
+2026-11-13T09:56:00.5344950Z Prepare all required actions
+2026-11-13T09:56:00.5402947Z Getting action download info
+2026-11-13T09:56:00.8423548Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-13T09:56:00.9862832Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+2026-11-13T09:56:01.5311418Z Download action repository 'astral-sh/setup-uv@v10.3.3' (SHA:68559e99cc807c1eb7e9238fd43a15bba460eec2)
+2026-11-13T09:56:02.1475636Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-11-13T09:56:02.3969260Z Complete job name: native-trainer
+2026-11-13T09:56:02.5089401Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-11-13T09:56:02.5091266Z with:
+2026-11-13T09:56:02.5092115Z   fetch-depth: 0
+2026-11-13T09:56:02.5093013Z   filter: blob:none
+2026-11-13T09:56:02.5094175Z   persist-credentials: false
+2026-11-13T09:56:02.5095253Z   repository: Afloat16/transformers
+2026-11-13T09:56:02.5104509Z   token: ***
+2026-11-13T09:56:02.5105405Z   ssh-strict: true
+2026-11-13T09:56:02.5106297Z   ssh-user: git
+2026-11-13T09:56:02.5107164Z   clean: true
+2026-11-13T09:56:02.5108182Z   sparse-checkout-cone-mode: true
+2026-11-13T09:56:02.5109515Z   fetch-tags: false
+2026-11-13T09:56:02.5110637Z   show-progress: true
+2026-11-13T09:56:02.5111762Z   lfs: false
+2026-11-13T09:56:02.5112720Z   submodules: false
+2026-11-13T09:56:02.5113918Z   set-safe-directory: true
+2026-11-13T09:56:02.5115208Z   allow-unsafe-pr-checkout: false
+2026-11-13T09:56:02.5116730Z env:
+2026-11-13T09:56:02.5117733Z   OMP_NUM_THREADS: 2
+2026-11-13T09:56:02.5118942Z   TOKENIZERS_PARALLELISM: false
+2026-11-13T09:56:02.5120177Z   PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
+2026-11-13T09:56:02.5121428Z   RUN_SLOW: 1
+2026-11-13T09:56:02.5122383Z ##[endgroup]
+2026-11-13T09:56:02.8230394Z Syncing repository: Afloat16/transformers
+2026-11-13T09:56:02.8233064Z ##[group]Getting Git version info
+2026-11-13T09:56:02.8235637Z Working directory is '/home/runner/work/transformers/transformers'
+2026-11-13T09:56:02.8237818Z [command]/usr/bin/git version
+2026-11-13T09:56:02.8350627Z git version 2.56.0
+2026-11-13T09:56:02.8374606Z ##[endgroup]
+2026-11-13T09:56:02.8384911Z Temporarily overriding HOME='/home/runner/work/_temp/263f6f45-8bb0-4153-860f-a9b511f0d943' before making global git config changes
+2026-11-13T09:56:02.8387453Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T09:56:02.8391191Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/transformers/transformers
+2026-11-13T09:56:02.8447399Z Deleting the contents of '/home/runner/work/transformers/transformers'
+2026-11-13T09:56:02.8451110Z ##[group]Determining repository object format
+2026-11-13T09:56:02.8453780Z ##[endgroup]
+2026-11-13T09:56:02.8455339Z ##[group]Initializing the repository
+2026-11-13T09:56:02.8459047Z [command]/usr/bin/git init /home/runner/work/transformers/transformers
+2026-11-13T09:56:02.8591280Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-13T09:56:02.8593701Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-13T09:56:02.8595195Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-13T09:56:02.8596600Z hint: call:
+2026-11-13T09:56:02.8597780Z hint:
+2026-11-13T09:56:02.8598978Z hint: 	git config --global init.defaultBranch <name>
+2026-11-13T09:56:02.8600590Z hint:
+2026-11-13T09:56:02.8602022Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-13T09:56:02.8604452Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-13T09:56:02.8606283Z hint:
+2026-11-13T09:56:02.8607255Z hint: 	git branch -m <name>
+2026-11-13T09:56:02.8608173Z hint:
+2026-11-13T09:56:02.8609278Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-13T09:56:02.8610968Z Initialized empty Git repository in /home/runner/work/transformers/transformers/.git/
+2026-11-13T09:56:02.8627153Z [command]/usr/bin/git remote add origin https://github.com/Afloat16/transformers
+2026-11-13T09:56:02.8713686Z ##[endgroup]
+2026-11-13T09:56:02.8716025Z ##[group]Disabling automatic garbage collection
+2026-11-13T09:56:02.8717956Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-13T09:56:02.8753718Z ##[endgroup]
+2026-11-13T09:56:02.8756411Z ##[group]Setting up auth
+2026-11-13T09:56:02.8758152Z Removing SSH command configuration
+2026-11-13T09:56:02.8760034Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T09:56:02.8809223Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T09:56:02.9220444Z Removing HTTP extra header
+2026-11-13T09:56:02.9227487Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T09:56:02.9275663Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T09:56:02.9519345Z Removing includeIf entries pointing to credentials config files
+2026-11-13T09:56:02.9523953Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T09:56:02.9569145Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T09:56:02.9814819Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-13T09:56:02.9864967Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/transformers/transformers/.git.path /home/runner/work/_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:02.9907729Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/transformers/transformers/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:02.9953164Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:02.9997047Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:03.0039740Z ##[endgroup]
+2026-11-13T09:56:03.0041309Z ##[group]Fetching the repository
+2026-11-13T09:56:03.0046287Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-11-13T09:56:06.0586843Z From https://github.com/Afloat16/transformers
+2026-11-13T09:56:06.0588327Z  * [new branch]          audit/cfg-negative-prompt-batch-expansion-20261113 -> origin/audit/cfg-negative-prompt-batch-expansion-20261113
+2026-11-13T09:56:06.0590051Z  * [new branch]          audit/label-smoother-half-accumulation-20261112 -> origin/audit/label-smoother-half-accumulation-20261112
+2026-11-13T09:56:06.0591558Z  * [new branch]          audit/trainer-core-fixes-20261113 -> origin/audit/trainer-core-fixes-20261113
+2026-11-13T09:56:06.0593042Z  * [new branch]          fix/cfg-negative-prompt-batch-expansion-20261113 -> origin/fix/cfg-negative-prompt-batch-expansion-20261113
+2026-11-13T09:56:06.0595071Z  * [new branch]          fix/empty-label-smoothing-loss-20261112 -> origin/fix/empty-label-smoothing-loss-20261112
+2026-11-13T09:56:06.0596618Z  * [new branch]          fix/label-smoother-half-accumulation-20261112 -> origin/fix/label-smoother-half-accumulation-20261112
+2026-11-13T09:56:06.0598374Z  * [new branch]          fix/length-grouped-tiny-distributed-datasets-20261112 -> origin/fix/length-grouped-tiny-distributed-datasets-20261112
+2026-11-13T09:56:06.0600123Z  * [new branch]          fix/multiple-choice-numpy-batches-20261112 -> origin/fix/multiple-choice-numpy-batches-20261112
+2026-11-13T09:56:06.0601774Z  * [new branch]          fix/parameter-group-absolute-learning-rates-20261112 -> origin/fix/parameter-group-absolute-learning-rates-20261112
+2026-11-13T09:56:06.0603882Z  * [new branch]          fix/trainer-float8-numpy-conversion-20261113 -> origin/fix/trainer-float8-numpy-conversion-20261113
+2026-11-13T09:56:06.0605875Z  * [new branch]          fix/trainer-optimizer-group-identity-20261112 -> origin/fix/trainer-optimizer-group-identity-20261112
+2026-11-13T09:56:06.0607027Z  * [new branch]          main       -> origin/main
+2026-11-13T09:56:06.0608101Z  * [new branch]          perf/seq2seq-array-label-batches-20261112 -> origin/perf/seq2seq-array-label-batches-20261112
+2026-11-13T09:56:06.0609904Z  * [new branch]          validation/cfg-negative-prompt-batch-expansion-20261113 -> origin/validation/cfg-negative-prompt-batch-expansion-20261113
+2026-11-13T09:56:06.0611929Z  * [new branch]          validation/label-smoother-half-accumulation-20261112 -> origin/validation/label-smoother-half-accumulation-20261112
+2026-11-13T09:56:06.0614196Z  * [new branch]          validation/length-grouped-ci-followup-20261113 -> origin/validation/length-grouped-ci-followup-20261113
+2026-11-13T09:56:06.0616119Z  * [new branch]          validation/length-grouped-tiny-distributed-datasets-20261112 -> origin/validation/length-grouped-tiny-distributed-datasets-20261112
+2026-11-13T09:56:06.0617962Z  * [new branch]          validation/multiple-choice-numpy-20261112 -> origin/validation/multiple-choice-numpy-20261112
+2026-11-13T09:56:06.0619740Z  * [new branch]          validation/parameter-group-learning-rates-20261112 -> origin/validation/parameter-group-learning-rates-20261112
+2026-11-13T09:56:06.0621467Z  * [new branch]          validation/seq2seq-array-label-batches-20261112 -> origin/validation/seq2seq-array-label-batches-20261112
+2026-11-13T09:56:06.0623096Z  * [new branch]          validation/streaming-eval-loss-probe-20261113 -> origin/validation/streaming-eval-loss-probe-20261113
+2026-11-13T09:56:06.0625170Z  * [new branch]          validation/trainer-float8-numpy-conversion-20261113 -> origin/validation/trainer-float8-numpy-conversion-20261113
+2026-11-13T09:56:06.0627372Z  * [new branch]          validation/trainer-optimizer-group-identity-20261112 -> origin/validation/trainer-optimizer-group-identity-20261112
+2026-11-13T09:56:06.0630101Z [command]/usr/bin/git branch --list --remote origin/validation/trainer-float8-numpy-conversion-20261113
+2026-11-13T09:56:06.0643016Z   origin/validation/trainer-float8-numpy-conversion-20261113
+2026-11-13T09:56:06.0654156Z [command]/usr/bin/git rev-parse refs/remotes/origin/validation/trainer-float8-numpy-conversion-20261113
+2026-11-13T09:56:06.0692886Z 6b28f4e47041ca8ad647ef201dda8db0a986fda6
+2026-11-13T09:56:06.0704735Z ##[endgroup]
+2026-11-13T09:56:06.0705474Z ##[group]Determining the checkout info
+2026-11-13T09:56:06.0705980Z ##[endgroup]
+2026-11-13T09:56:06.0707952Z [command]/usr/bin/git sparse-checkout disable
+2026-11-13T09:56:06.0778754Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-13T09:56:06.0827055Z ##[group]Checking out the ref
+2026-11-13T09:56:06.0832873Z [command]/usr/bin/git checkout --progress --force -B validation/trainer-float8-numpy-conversion-20261113 refs/remotes/origin/validation/trainer-float8-numpy-conversion-20261113
+2026-11-13T09:56:11.1570150Z Updating files:   0% (1/6774)
+2026-11-13T09:56:11.1624747Z Updating files:   1% (68/6774)
+2026-11-13T09:56:11.1708068Z Updating files:   2% (136/6774)
+2026-11-13T09:56:11.1769189Z Updating files:   3% (204/6774)
+2026-11-13T09:56:11.1821039Z Updating files:   4% (271/6774)
+2026-11-13T09:56:11.1870893Z Updating files:   5% (339/6774)
+2026-11-13T09:56:11.1924475Z Updating files:   6% (407/6774)
+2026-11-13T09:56:11.1980073Z Updating files:   7% (475/6774)
+2026-11-13T09:56:11.2035338Z Updating files:   8% (542/6774)
+2026-11-13T09:56:11.2090087Z Updating files:   9% (610/6774)
+2026-11-13T09:56:11.2143964Z Updating files:  10% (678/6774)
+2026-11-13T09:56:11.2196021Z Updating files:  11% (746/6774)
+2026-11-13T09:56:11.2250860Z Updating files:  12% (813/6774)
+2026-11-13T09:56:11.2308424Z Updating files:  13% (881/6774)
+2026-11-13T09:56:11.2378127Z Updating files:  14% (949/6774)
+2026-11-13T09:56:11.2445014Z Updating files:  15% (1017/6774)
+2026-11-13T09:56:11.2499148Z Updating files:  16% (1084/6774)
+2026-11-13T09:56:11.2557107Z Updating files:  17% (1152/6774)
+2026-11-13T09:56:11.2619466Z Updating files:  18% (1220/6774)
+2026-11-13T09:56:11.2667198Z Updating files:  19% (1288/6774)
+2026-11-13T09:56:11.2732105Z Updating files:  20% (1355/6774)
+2026-11-13T09:56:11.2790955Z Updating files:  21% (1423/6774)
+2026-11-13T09:56:11.2848795Z Updating files:  22% (1491/6774)
+2026-11-13T09:56:11.2948786Z Updating files:  23% (1559/6774)
+2026-11-13T09:56:11.3039591Z Updating files:  24% (1626/6774)
+2026-11-13T09:56:11.3138175Z Updating files:  25% (1694/6774)
+2026-11-13T09:56:11.3223618Z Updating files:  26% (1762/6774)
+2026-11-13T09:56:11.3332086Z Updating files:  27% (1829/6774)
+2026-11-13T09:56:11.3405317Z Updating files:  28% (1897/6774)
+2026-11-13T09:56:11.3471553Z Updating files:  29% (1965/6774)
+2026-11-13T09:56:11.3534754Z Updating files:  30% (2033/6774)
+2026-11-13T09:56:11.3612486Z Updating files:  31% (2100/6774)
+2026-11-13T09:56:11.3689019Z Updating files:  32% (2168/6774)
+2026-11-13T09:56:11.3787037Z Updating files:  33% (2236/6774)
+2026-11-13T09:56:11.3860023Z Updating files:  34% (2304/6774)
+2026-11-13T09:56:11.3942955Z Updating files:  35% (2371/6774)
+2026-11-13T09:56:11.4023483Z Updating files:  36% (2439/6774)
+2026-11-13T09:56:11.4092949Z Updating files:  37% (2507/6774)
+2026-11-13T09:56:11.4165916Z Updating files:  38% (2575/6774)
+2026-11-13T09:56:11.4233545Z Updating files:  39% (2642/6774)
+2026-11-13T09:56:11.4300596Z Updating files:  40% (2710/6774)
+2026-11-13T09:56:11.4373835Z Updating files:  41% (2778/6774)
+2026-11-13T09:56:11.4445579Z Updating files:  42% (2846/6774)
+2026-11-13T09:56:11.4514066Z Updating files:  43% (2913/6774)
+2026-11-13T09:56:11.4583045Z Updating files:  44% (2981/6774)
+2026-11-13T09:56:11.4657664Z Updating files:  45% (3049/6774)
+2026-11-13T09:56:11.4727431Z Updating files:  46% (3117/6774)
+2026-11-13T09:56:11.4822669Z Updating files:  47% (3184/6774)
+2026-11-13T09:56:11.4907377Z Updating files:  48% (3252/6774)
+2026-11-13T09:56:11.4966411Z Updating files:  49% (3320/6774)
+2026-11-13T09:56:11.5038315Z Updating files:  50% (3387/6774)
+2026-11-13T09:56:11.5109785Z Updating files:  51% (3455/6774)
+2026-11-13T09:56:11.5184072Z Updating files:  52% (3523/6774)
+2026-11-13T09:56:11.5246171Z Updating files:  53% (3591/6774)
+2026-11-13T09:56:11.5315908Z Updating files:  54% (3658/6774)
+2026-11-13T09:56:11.5382959Z Updating files:  55% (3726/6774)
+2026-11-13T09:56:11.5462060Z Updating files:  56% (3794/6774)
+2026-11-13T09:56:11.5517501Z Updating files:  57% (3862/6774)
+2026-11-13T09:56:11.5590550Z Updating files:  58% (3929/6774)
+2026-11-13T09:56:11.5660256Z Updating files:  59% (3997/6774)
+2026-11-13T09:56:11.5746423Z Updating files:  60% (4065/6774)
+2026-11-13T09:56:11.5809701Z Updating files:  61% (4133/6774)
+2026-11-13T09:56:11.5869360Z Updating files:  62% (4200/6774)
+2026-11-13T09:56:11.5930335Z Updating files:  63% (4268/6774)
+2026-11-13T09:56:11.5992861Z Updating files:  64% (4336/6774)
+2026-11-13T09:56:11.6060208Z Updating files:  65% (4404/6774)
+2026-11-13T09:56:11.6116102Z Updating files:  66% (4471/6774)
+2026-11-13T09:56:11.6188176Z Updating files:  67% (4539/6774)
+2026-11-13T09:56:11.6257741Z Updating files:  68% (4607/6774)
+2026-11-13T09:56:11.6327407Z Updating files:  69% (4675/6774)
+2026-11-13T09:56:11.6429741Z Updating files:  70% (4742/6774)
+2026-11-13T09:56:11.6495116Z Updating files:  71% (4810/6774)
+2026-11-13T09:56:11.6665256Z Updating files:  72% (4878/6774)
+2026-11-13T09:56:11.6727979Z Updating files:  73% (4946/6774)
+2026-11-13T09:56:11.6790759Z Updating files:  74% (5013/6774)
+2026-11-13T09:56:11.6854506Z Updating files:  75% (5081/6774)
+2026-11-13T09:56:11.6915541Z Updating files:  76% (5149/6774)
+2026-11-13T09:56:11.6979606Z Updating files:  77% (5216/6774)
+2026-11-13T09:56:11.7043102Z Updating files:  78% (5284/6774)
+2026-11-13T09:56:11.7102549Z Updating files:  79% (5352/6774)
+2026-11-13T09:56:11.7157567Z Updating files:  80% (5420/6774)
+2026-11-13T09:56:11.7218954Z Updating files:  81% (5487/6774)
+2026-11-13T09:56:11.7290123Z Updating files:  82% (5555/6774)
+2026-11-13T09:56:11.7352384Z Updating files:  83% (5623/6774)
+2026-11-13T09:56:11.7417735Z Updating files:  84% (5691/6774)
+2026-11-13T09:56:11.7477984Z Updating files:  85% (5758/6774)
+2026-11-13T09:56:11.7541636Z Updating files:  86% (5826/6774)
+2026-11-13T09:56:11.7601481Z Updating files:  87% (5894/6774)
+2026-11-13T09:56:11.7655592Z Updating files:  88% (5962/6774)
+2026-11-13T09:56:11.7718178Z Updating files:  89% (6029/6774)
+2026-11-13T09:56:11.7785974Z Updating files:  90% (6097/6774)
+2026-11-13T09:56:11.7843214Z Updating files:  91% (6165/6774)
+2026-11-13T09:56:11.7905860Z Updating files:  92% (6233/6774)
+2026-11-13T09:56:11.7968925Z Updating files:  93% (6300/6774)
+2026-11-13T09:56:11.8040884Z Updating files:  94% (6368/6774)
+2026-11-13T09:56:11.8103324Z Updating files:  95% (6436/6774)
+2026-11-13T09:56:11.8162194Z Updating files:  96% (6504/6774)
+2026-11-13T09:56:11.8251312Z Updating files:  97% (6571/6774)
+2026-11-13T09:56:11.8333377Z Updating files:  98% (6639/6774)
+2026-11-13T09:56:11.8396153Z Updating files:  99% (6707/6774)
+2026-11-13T09:56:11.8396561Z Updating files: 100% (6774/6774)
+2026-11-13T09:56:11.8396928Z Updating files: 100% (6774/6774), done.
+2026-11-13T09:56:11.8512785Z Switched to a new branch 'validation/trainer-float8-numpy-conversion-20261113'
+2026-11-13T09:56:11.8519504Z branch 'validation/trainer-float8-numpy-conversion-20261113' set up to track 'origin/validation/trainer-float8-numpy-conversion-20261113'.
+2026-11-13T09:56:11.8561649Z ##[endgroup]
+2026-11-13T09:56:11.8619354Z [command]/usr/bin/git log -1 --format=%H
+2026-11-13T09:56:11.8659459Z 6b28f4e47041ca8ad647ef201dda8db0a986fda6
+2026-11-13T09:56:11.8668675Z ##[group]Removing auth
+2026-11-13T09:56:11.8669139Z Removing SSH command configuration
+2026-11-13T09:56:11.8672721Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T09:56:11.8718255Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T09:56:11.8983706Z Removing HTTP extra header
+2026-11-13T09:56:11.8989289Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T09:56:11.9036092Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T09:56:11.9292455Z Removing includeIf entries pointing to credentials config files
+2026-11-13T09:56:11.9296932Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T09:56:11.9336621Z includeif.gitdir:/home/runner/work/transformers/transformers/.git.path
+2026-11-13T09:56:11.9337899Z includeif.gitdir:/home/runner/work/transformers/transformers/.git/worktrees/*.path
+2026-11-13T09:56:11.9338992Z includeif.gitdir:/github/workspace/.git.path
+2026-11-13T09:56:11.9339876Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-13T09:56:11.9348424Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/transformers/transformers/.git.path
+2026-11-13T09:56:11.9386311Z /home/runner/work/_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:11.9397465Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/transformers/transformers/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-c6a531a0\-794d\-44cf\-9c05\-41a95dda7ebd\.config
+2026-11-13T09:56:11.9451924Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/transformers/transformers/.git/worktrees/*.path
+2026-11-13T09:56:11.9490566Z /home/runner/work/_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:11.9501395Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/transformers/transformers/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-c6a531a0\-794d\-44cf\-9c05\-41a95dda7ebd\.config
+2026-11-13T09:56:11.9546893Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-13T09:56:11.9582648Z /github/runner_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:11.9591349Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-c6a531a0\-794d\-44cf\-9c05\-41a95dda7ebd\.config
+2026-11-13T09:56:11.9637803Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-13T09:56:11.9672635Z /github/runner_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config
+2026-11-13T09:56:11.9681540Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-c6a531a0\-794d\-44cf\-9c05\-41a95dda7ebd\.config
+2026-11-13T09:56:11.9727115Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T09:56:11.9982191Z Removing credentials config '/home/runner/work/_temp/git-credentials-c6a531a0-794d-44cf-9c05-41a95dda7ebd.config'
+2026-11-13T09:56:11.9993996Z ##[endgroup]
+2026-11-13T09:56:12.0271796Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+2026-11-13T09:56:12.0272209Z with:
+2026-11-13T09:56:12.0272410Z   python-version: 3.12
+2026-11-13T09:56:12.0272636Z   check-latest: false
+2026-11-13T09:56:12.0275584Z   token: ***
+2026-11-13T09:56:12.0275932Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+2026-11-13T09:56:12.0276348Z   update-environment: true
+2026-11-13T09:56:12.0276593Z   allow-prereleases: false
+2026-11-13T09:56:12.0276819Z   freethreaded: false
+2026-11-13T09:56:12.0277022Z env:
+2026-11-13T09:56:12.0277420Z   OMP_NUM_THREADS: 2
+2026-11-13T09:56:12.0277640Z   TOKENIZERS_PARALLELISM: false
+2026-11-13T09:56:12.0277896Z   PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
+2026-11-13T09:56:12.0278150Z   RUN_SLOW: 1
+2026-11-13T09:56:12.0278337Z ##[endgroup]
+2026-11-13T09:56:12.1604251Z ##[group]Installed versions
+2026-11-13T09:56:12.1689717Z Successfully set up CPython (3.12.16)
+2026-11-13T09:56:12.1690480Z ##[endgroup]
+2026-11-13T09:56:12.1954759Z ##[group]Run astral-sh/setup-uv@v10.3.3
+2026-11-13T09:56:12.1955076Z with:
+2026-11-13T09:56:12.1955286Z   activate-environment: false
+2026-11-13T09:56:12.1955540Z   no-project: false
+2026-11-13T09:56:12.1955849Z   working-directory: /home/runner/work/transformers/transformers
+2026-11-13T09:56:12.1958638Z   github-token: ***
+2026-11-13T09:56:12.1958864Z   enable-cache: auto
+2026-11-13T09:56:12.1959486Z   cache-dependency-glob: **/*requirements*.txt
+**/*requirements*.in
+**/*constraints*.txt
+**/*constraints*.in
+**/pyproject.toml
+**/uv.lock
+**/*.py.lock
+
+2026-11-13T09:56:12.1960122Z   restore-cache: true
+2026-11-13T09:56:12.1960336Z   save-cache: auto
+2026-11-13T09:56:12.1960544Z   prune-cache: false
+2026-11-13T09:56:12.1960761Z   cache-python: false
+2026-11-13T09:56:12.1960985Z   ignore-nothing-to-cache: false
+2026-11-13T09:56:12.1961251Z   ignore-empty-workdir: false
+2026-11-13T09:56:12.1961773Z   download-from-astral-mirror: true
+2026-11-13T09:56:12.1962144Z   add-problem-matchers: true
+2026-11-13T09:56:12.1962436Z   quiet: false
+2026-11-13T09:56:12.1962669Z   resolution-strategy: highest
+2026-11-13T09:56:12.1962951Z env:
+2026-11-13T09:56:12.1963154Z   OMP_NUM_THREADS: 2
+2026-11-13T09:56:12.1963749Z   TOKENIZERS_PARALLELISM: false
+2026-11-13T09:56:12.1964016Z   PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
+2026-11-13T09:56:12.1964264Z   RUN_SLOW: 1
+2026-11-13T09:56:12.1964528Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:12.1965033Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-13T09:56:12.1965487Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:12.1965885Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:12.1966269Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:12.1966652Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-13T09:56:12.1966976Z ##[endgroup]
+2026-11-13T09:56:12.3970799Z Trying to find version for uv in: /home/runner/work/transformers/transformers/uv.toml
+2026-11-13T09:56:12.3971745Z Could not find file: /home/runner/work/transformers/transformers/uv.toml
+2026-11-13T09:56:12.3972655Z Trying to find version for uv in: /home/runner/work/transformers/transformers/pyproject.toml
+2026-11-13T09:56:12.3976342Z Could not determine uv version from uv.toml or pyproject.toml. Falling back to latest.
+2026-11-13T09:56:12.3981682Z Fetching manifest data from https://releases.astral.sh/github/versions/main/v1/uv.ndjson ...
+2026-11-13T09:56:12.5157492Z Downloading uv from "https://releases.astral.sh/github/uv/releases/download/0.13.8/uv-x86_64-unknown-linux-gnu.tar.gz" ...
+2026-11-13T09:56:12.8216361Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/f88afdd8-5b42-4a60-8ea4-04a7d6a5ea14 -f /home/runner/work/_temp/3800b109-754e-4b13-b0be-f250539cca5a
+2026-11-13T09:56:13.1318166Z Added /home/runner/.local/bin to the path
+2026-11-13T09:56:13.1321692Z Added /opt/hostedtoolcache/uv/0.13.8/x86_64 to the path
+2026-11-13T09:56:13.1323106Z Set UV_PYTHON_INSTALL_DIR to /home/runner/work/_temp/uv-python-dir
+2026-11-13T09:56:13.1324029Z Added /home/runner/work/_temp/uv-python-dir to the path
+2026-11-13T09:56:13.1334694Z Set UV_CACHE_DIR to /home/runner/work/_temp/setup-uv-cache
+2026-11-13T09:56:13.1335080Z Successfully installed uv version 0.13.8
+2026-11-13T09:56:13.4375108Z Searching files using cache dependency glob: /home/runner/work/transformers/transformers/**/*requirements*.txt,/home/runner/work/transformers/transformers/**/*requirements*.in,/home/runner/work/transformers/transformers/**/*constraints*.txt,/home/runner/work/transformers/transformers/**/*constraints*.in,/home/runner/work/transformers/transformers/**/pyproject.toml,/home/runner/work/transformers/transformers/**/uv.lock,/home/runner/work/transformers/transformers/**/*.py.lock
+2026-11-13T09:56:13.4919745Z /home/runner/work/transformers/transformers/benchmark_v2/requirements.txt
+2026-11-13T09:56:13.6393745Z /home/runner/work/transformers/transformers/pyproject.toml
+2026-11-13T09:56:14.1645885Z /home/runner/work/transformers/transformers/tests/sagemaker/scripts/pytorch/requirements.txt
+2026-11-13T09:56:14.1768170Z /home/runner/work/transformers/transformers/utils/checkers-requirements.txt
+2026-11-13T09:56:14.1824507Z Found 4 files to hash.
+2026-11-13T09:56:14.1918121Z Trying to restore cache from GitHub Actions cache with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-unknown-574418ac2a9bed37de6b8ec45db2f0da604b771db3e23a1f1dba1d6f7953799a
+2026-11-13T09:56:14.3831178Z No GitHub Actions cache found for key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-unknown-574418ac2a9bed37de6b8ec45db2f0da604b771db3e23a1f1dba1d6f7953799a
+2026-11-13T09:56:14.5030197Z ##[group]Run uv venv .venv
+2026-11-13T09:56:14.5030550Z [36;1muv venv .venv[0m
+2026-11-13T09:56:14.5031075Z [36;1muv pip install --python .venv/bin/python torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu[0m
+2026-11-13T09:56:14.5032114Z [36;1muv pip install --python .venv/bin/python -e ".[quality]" "pytest>=9,<10" pytest-xdist pytest-env parameterized psutil rich timeout-decorator accelerate datasets scipy scikit-learn[0m
+2026-11-13T09:56:14.5057168Z shell: /usr/bin/bash -e {0}
+2026-11-13T09:56:14.5057422Z env:
+2026-11-13T09:56:14.5057611Z   OMP_NUM_THREADS: 2
+2026-11-13T09:56:14.5057851Z   TOKENIZERS_PARALLELISM: false
+2026-11-13T09:56:14.5058121Z   PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
+2026-11-13T09:56:14.5058376Z   RUN_SLOW: 1
+2026-11-13T09:56:14.5058647Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:14.5059081Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-13T09:56:14.5059564Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:14.5059945Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:14.5060324Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:14.5060700Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-13T09:56:14.5061090Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-11-13T09:56:14.5061459Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-11-13T09:56:14.5061752Z ##[endgroup]
+2026-11-13T09:56:14.6547478Z Downloading cpython-3.11.18-linux-x86_64-gnu (download) (29.4MiB)
+2026-11-13T09:56:15.4102977Z  Downloaded cpython-3.11.18-linux-x86_64-gnu (download)
+2026-11-13T09:56:15.5453998Z Using CPython 3.11.18
+2026-11-13T09:56:15.5454515Z Creating virtual environment at: .venv
+2026-11-13T09:56:15.5461221Z Activate with: .venv/bin/activate
+2026-11-13T09:56:16.3547661Z Resolved 10 packages in 673ms
+2026-11-13T09:56:16.3762650Z Downloading networkx (2.0MiB)
+2026-11-13T09:56:16.3786846Z Downloading setuptools (1.2MiB)
+2026-11-13T09:56:16.3804946Z Downloading torch (187.1MiB)
+2026-11-13T09:56:16.3969796Z Downloading sympy (6.0MiB)
+2026-11-13T09:56:16.4165073Z  Downloaded setuptools
+2026-11-13T09:56:16.5235575Z  Downloaded networkx
+2026-11-13T09:56:16.6061048Z  Downloaded sympy
+2026-11-13T09:56:19.1913639Z  Downloaded torch
+2026-11-13T09:56:19.1915845Z Prepared 10 packages in 2.83s
+2026-11-13T09:56:19.4197268Z Installed 10 packages in 227ms
+2026-11-13T09:56:19.4197746Z  + filelock==4.2.4
+2026-11-13T09:56:19.4198092Z  + fsspec==2026.9.0
+2026-11-13T09:56:19.4198427Z  + jinja2==3.1.6
+2026-11-13T09:56:19.4198769Z  + markupsafe==3.0.3
+2026-11-13T09:56:19.4199112Z  + mpmath==1.3.0
+2026-11-13T09:56:19.4199855Z  + networkx==3.6.1
+2026-11-13T09:56:19.4200515Z  + setuptools==78.1.0
+2026-11-13T09:56:19.4201151Z  + sympy==1.14.0
+2026-11-13T09:56:19.4201860Z  + torch==2.14.0+cpu
+2026-11-13T09:56:19.4202537Z  + typing-extensions==4.16.0
+2026-11-13T09:56:22.2867929Z Resolved 71 packages in 2.73s
+2026-11-13T09:56:22.2918946Z    Building transformers @ file:///home/runner/work/transformers/transformers
+2026-11-13T09:56:22.3345341Z Downloading pydantic-core (2.1MiB)
+2026-11-13T09:56:22.3414670Z Downloading tokenizers (3.2MiB)
+2026-11-13T09:56:22.3419928Z Downloading hf-xet (4.1MiB)
+2026-11-13T09:56:22.3719456Z Downloading scikit-learn (8.9MiB)
+2026-11-13T09:56:22.3922299Z Downloading pandas (11.8MiB)
+2026-11-13T09:56:22.3964163Z Downloading numpy (16.1MiB)
+2026-11-13T09:56:22.3969775Z Downloading ruff (13.6MiB)
+2026-11-13T09:56:22.3970596Z Downloading libcst (2.2MiB)
+2026-11-13T09:56:22.3971315Z Downloading ty (10.3MiB)
+2026-11-13T09:56:22.3971933Z Downloading pyarrow (52.5MiB)
+2026-11-13T09:56:22.4004057Z Downloading scipy (33.7MiB)
+2026-11-13T09:56:22.4010153Z Downloading pygments (1.2MiB)
+2026-11-13T09:56:22.4066498Z    Building timeout-decorator==0.5.0
+2026-11-13T09:56:22.5766540Z  Downloaded pygments
+2026-11-13T09:56:22.6286386Z  Downloaded pydantic-core
+2026-11-13T09:56:22.6620506Z  Downloaded libcst
+2026-11-13T09:56:22.7244502Z  Downloaded tokenizers
+2026-11-13T09:56:22.7533954Z  Downloaded hf-xet
+2026-11-13T09:56:22.8074430Z       Built timeout-decorator==0.5.0
+2026-11-13T09:56:22.9534899Z  Downloaded scikit-learn
+2026-11-13T09:56:22.9957878Z  Downloaded ty
+2026-11-13T09:56:23.0652872Z  Downloaded pandas
+2026-11-13T09:56:23.0938207Z  Downloaded ruff
+2026-11-13T09:56:23.1425611Z  Downloaded numpy
+2026-11-13T09:56:23.3765872Z  Downloaded scipy
+2026-11-13T09:56:23.6040128Z  Downloaded pyarrow
+2026-11-13T09:56:24.2349499Z       Built transformers @ file:///home/runner/work/transformers/transformers
+2026-11-13T09:56:24.2364657Z Prepared 61 packages in 1.94s
+2026-11-13T09:56:24.3061406Z Installed 61 packages in 69ms
+2026-11-13T09:56:24.3061958Z  + accelerate==1.15.0
+2026-11-13T09:56:24.3062353Z  + annotated-doc==0.0.6
+2026-11-13T09:56:24.3062756Z  + annotated-types==0.8.0
+2026-11-13T09:56:24.3063141Z  + anyio==4.16.0
+2026-11-13T09:56:24.3063767Z  + click==8.5.1
+2026-11-13T09:56:24.3064133Z  + cloudpickle==3.1.2
+2026-11-13T09:56:24.3064495Z  + datasets==5.2.0
+2026-11-13T09:56:24.3064835Z  + dill==0.4.1
+2026-11-13T09:56:24.3065403Z  + execnet==2.1.2
+2026-11-13T09:56:24.3065760Z  + gitdb==4.0.12
+2026-11-13T09:56:24.3072555Z  + gitpython==3.1.18
+2026-11-13T09:56:24.3072949Z  + h11==0.16.0
+2026-11-13T09:56:24.3073563Z  + hf-xet==1.8.0
+2026-11-13T09:56:24.3073952Z  + httpcore2==2.16.0
+2026-11-13T09:56:24.3074343Z  + httpx2==2.16.0
+2026-11-13T09:56:24.3074734Z  + huggingface-hub==2.4.0
+2026-11-13T09:56:24.3075157Z  + idna==3.20
+2026-11-13T09:56:24.3075510Z  + iniconfig==2.3.1
+2026-11-13T09:56:24.3075873Z  + joblib==1.6.0
+2026-11-13T09:56:24.3076226Z  + libcst==1.9.0
+2026-11-13T09:56:24.3076615Z  + markdown-it-py==4.3.0
+2026-11-13T09:56:24.3077074Z  + mdurl==0.1.2
+2026-11-13T09:56:24.3077460Z  + multiprocess==0.70.19
+2026-11-13T09:56:24.3077897Z  + narwhals==2.28.0
+2026-11-13T09:56:24.3078254Z  + numpy==2.4.6
+2026-11-13T09:56:24.3078649Z  + packaging==26.3
+2026-11-13T09:56:24.3079018Z  + pandas==3.1.1
+2026-11-13T09:56:24.3079333Z  + parameterized==0.9.0
+2026-11-13T09:56:24.3079568Z  + pluggy==1.7.0
+2026-11-13T09:56:24.3079758Z  + psutil==7.2.2
+2026-11-13T09:56:24.3079964Z  + pyarrow==26.0.1
+2026-11-13T09:56:24.3080158Z  + pydantic==2.14.3
+2026-11-13T09:56:24.3080367Z  + pydantic-core==2.50.4
+2026-11-13T09:56:24.3080587Z  + pygments==2.21.0
+2026-11-13T09:56:24.3080776Z  + pytest==9.2.0
+2026-11-13T09:56:24.3080969Z  + pytest-env==1.8.5
+2026-11-13T09:56:24.3081181Z  + pytest-xdist==3.8.0
+2026-11-13T09:56:24.3081395Z  + python-dateutil==4.0.0
+2026-11-13T09:56:24.3081625Z  + python-dotenv==1.2.4
+2026-11-13T09:56:24.3081833Z  + pyyaml==6.0.3
+2026-11-13T09:56:24.3082017Z  + regex==2026.11.9
+2026-11-13T09:56:24.3082209Z  + rich==15.0.0
+2026-11-13T09:56:24.3082394Z  + ruff==0.14.10
+2026-11-13T09:56:24.3082615Z  + safetensors==0.8.0
+2026-11-13T09:56:24.3082879Z  + scikit-learn==1.9.1
+2026-11-13T09:56:24.3083116Z  + scipy==1.17.1
+2026-11-13T09:56:24.3084202Z  + shellingham==1.5.4
+2026-11-13T09:56:24.3084428Z  + smmap==5.0.3
+2026-11-13T09:56:24.3084647Z  + threadpoolctl==3.8.0
+2026-11-13T09:56:24.3084891Z  + timeout-decorator==0.5.0
+2026-11-13T09:56:24.3085133Z  + tokenizers==0.23.3
+2026-11-13T09:56:24.3085337Z  + tqdm==4.70.1
+2026-11-13T09:56:24.3085686Z  + transformers==5.23.0.dev0 (from file:///home/runner/work/transformers/transformers)
+2026-11-13T09:56:24.3086127Z  + transformers-mlinter==0.1.6
+2026-11-13T09:56:24.3086377Z  + truststore==0.10.5
+2026-11-13T09:56:24.3086579Z  + ty==0.0.20
+2026-11-13T09:56:24.3086763Z  + typer==0.29.1
+2026-11-13T09:56:24.3086970Z  + typing-inspection==0.4.5
+2026-11-13T09:56:24.3087196Z  + tzdata==2026.6
+2026-11-13T09:56:24.3087384Z  + urllib3==1.26.20
+2026-11-13T09:56:24.3087574Z  + xxhash==4.1.0
+2026-11-13T09:56:24.3382920Z ##[group]Run .venv/bin/python validation/run_float8_predictions.py
+2026-11-13T09:56:24.3383750Z [36;1m.venv/bin/python validation/run_float8_predictions.py[0m
+2026-11-13T09:56:24.3404901Z shell: /usr/bin/bash -e {0}
+2026-11-13T09:56:24.3405147Z env:
+2026-11-13T09:56:24.3405340Z   OMP_NUM_THREADS: 2
+2026-11-13T09:56:24.3405576Z   TOKENIZERS_PARALLELISM: false
+2026-11-13T09:56:24.3405841Z   PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
+2026-11-13T09:56:24.3406096Z   RUN_SLOW: 1
+2026-11-13T09:56:24.3406369Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:24.3406809Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-13T09:56:24.3407235Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:24.3407621Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:24.3408007Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:56:24.3408432Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-13T09:56:24.3408826Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-11-13T09:56:24.3409190Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-11-13T09:56:24.3409490Z ##[endgroup]
+2026-11-13T09:56:24.3958521Z From https://github.com/Afloat16/transformers
+2026-11-13T09:56:24.3958990Z  * branch                41f9d3992023970fb5a463e70d56232506c80fbc -> FETCH_HEAD
+2026-11-13T09:56:24.3959458Z  * branch                bf9a3cbe64372541b9be46b691f033301e6fc1b8 -> FETCH_HEAD
+2026-11-13T09:56:38.0176381Z 
+2026-11-13T09:56:38.0177344Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits 
+2026-11-13T09:56:38.0179478Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits PASSED [100%]tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits [PASSED] 1.24s
+2026-11-13T09:56:38.0181051Z 
+2026-11-13T09:56:38.0181096Z 
+2026-11-13T09:56:38.0181362Z =================================== FAILURES ===================================
+2026-11-13T09:56:38.0182468Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e4m3fn, accumulation_steps=None) _
+2026-11-13T09:56:38.0183526Z 
+2026-11-13T09:56:38.0184189Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0184952Z 
+2026-11-13T09:56:38.0185156Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0185676Z         dtypes = (
+2026-11-13T09:56:38.0186040Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0186465Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0186903Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0187323Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0187842Z             torch.bfloat16,
+2026-11-13T09:56:38.0188228Z             torch.float32,
+2026-11-13T09:56:38.0188599Z             torch.float64,
+2026-11-13T09:56:38.0188969Z         )
+2026-11-13T09:56:38.0189308Z         for dtype in dtypes:
+2026-11-13T09:56:38.0189756Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0190461Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0191620Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0192240Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0192742Z                             a=1.5,
+2026-11-13T09:56:38.0193153Z                             b=2.5,
+2026-11-13T09:56:38.0193818Z                             double_output=True,
+2026-11-13T09:56:38.0194282Z                             eval_len=7,
+2026-11-13T09:56:38.0194761Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0195360Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0196569Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0197748Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0198589Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0199074Z                             report_to=[],
+2026-11-13T09:56:38.0199516Z                         )
+2026-11-13T09:56:38.0200030Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0200672Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0201177Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0201694Z                             expected = expected.float()
+2026-11-13T09:56:38.0202216Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0202681Z     
+2026-11-13T09:56:38.0203094Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0203937Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0204307Z 
+2026-11-13T09:56:38.0204533Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0205131Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0205746Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0206262Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0206786Z src/transformers/trainer.py:3052: in evaluation_loop
+2026-11-13T09:56:38.0207355Z     all_preds = all_preds.get_arrays()
+2026-11-13T09:56:38.0207807Z                 ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0208324Z src/transformers/trainer_pt_utils.py:400: in get_arrays
+2026-11-13T09:56:38.0208867Z     self.to_cpu_and_numpy()
+2026-11-13T09:56:38.0209391Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0210015Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0210506Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0211030Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0211634Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0212162Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0212703Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0213576Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0214170Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0214705Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0215115Z 
+2026-11-13T09:56:38.0215401Z tensors = tensor([3.2500, 2.2500, 3.5000, 5.0000, 2.2500, 2.2500, 5.0000],
+2026-11-13T09:56:38.0216012Z        dtype=torch.float8_e4m3fn)
+2026-11-13T09:56:38.0216296Z 
+2026-11-13T09:56:38.0216451Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0217104Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0217820Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0218417Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0219005Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0219995Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0220666Z     
+2026-11-13T09:56:38.0220987Z         t = tensors.cpu()
+2026-11-13T09:56:38.0221399Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0221940Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0223046Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0224443Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0225006Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0225434Z >       return t.numpy()
+2026-11-13T09:56:38.0225801Z                ^^^^^^^^^
+2026-11-13T09:56:38.0226492Z E       TypeError: Got unsupported ScalarType Float8_e4m3fn
+2026-11-13T09:56:38.0226920Z 
+2026-11-13T09:56:38.0227149Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0228174Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e4m3fn, accumulation_steps=1) _
+2026-11-13T09:56:38.0228990Z 
+2026-11-13T09:56:38.0229659Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0230489Z 
+2026-11-13T09:56:38.0230724Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0231373Z         dtypes = (
+2026-11-13T09:56:38.0231724Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0232130Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0232546Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0232962Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0233627Z             torch.bfloat16,
+2026-11-13T09:56:38.0234033Z             torch.float32,
+2026-11-13T09:56:38.0234432Z             torch.float64,
+2026-11-13T09:56:38.0234803Z         )
+2026-11-13T09:56:38.0235141Z         for dtype in dtypes:
+2026-11-13T09:56:38.0235595Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0236307Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0237120Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0237761Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0238283Z                             a=1.5,
+2026-11-13T09:56:38.0238709Z                             b=2.5,
+2026-11-13T09:56:38.0239158Z                             double_output=True,
+2026-11-13T09:56:38.0239645Z                             eval_len=7,
+2026-11-13T09:56:38.0240137Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0240738Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0241671Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0242836Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0246238Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0246770Z                             report_to=[],
+2026-11-13T09:56:38.0247221Z                         )
+2026-11-13T09:56:38.0247749Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0248403Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0248918Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0249443Z                             expected = expected.float()
+2026-11-13T09:56:38.0249984Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0250452Z     
+2026-11-13T09:56:38.0250894Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0251525Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0251888Z 
+2026-11-13T09:56:38.0252108Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0252994Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0253904Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0254446Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0254986Z src/transformers/trainer.py:3040: in evaluation_loop
+2026-11-13T09:56:38.0255640Z     all_preds.to_cpu_and_numpy()
+2026-11-13T09:56:38.0256221Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0256866Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0257347Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0257903Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0258786Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0259396Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0259986Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0260651Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0261226Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0261758Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0262199Z 
+2026-11-13T09:56:38.0262512Z tensors = tensor([3.2500, 2.2500, 3.5000], dtype=torch.float8_e4m3fn)
+2026-11-13T09:56:38.0262990Z 
+2026-11-13T09:56:38.0263176Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0264047Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0264745Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0265356Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0265987Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0266665Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0267305Z     
+2026-11-13T09:56:38.0267614Z         t = tensors.cpu()
+2026-11-13T09:56:38.0268031Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0268590Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0269719Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0270817Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0271403Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0271850Z >       return t.numpy()
+2026-11-13T09:56:38.0272232Z                ^^^^^^^^^
+2026-11-13T09:56:38.0272715Z E       TypeError: Got unsupported ScalarType Float8_e4m3fn
+2026-11-13T09:56:38.0273148Z 
+2026-11-13T09:56:38.0273666Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0274759Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e4m3fnuz, accumulation_steps=None) _
+2026-11-13T09:56:38.0275605Z 
+2026-11-13T09:56:38.0276309Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0277198Z 
+2026-11-13T09:56:38.0277461Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0277998Z         dtypes = (
+2026-11-13T09:56:38.0278377Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0278836Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0279290Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0279738Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0280188Z             torch.bfloat16,
+2026-11-13T09:56:38.0280598Z             torch.float32,
+2026-11-13T09:56:38.0280992Z             torch.float64,
+2026-11-13T09:56:38.0281380Z         )
+2026-11-13T09:56:38.0281728Z         for dtype in dtypes:
+2026-11-13T09:56:38.0282201Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0282935Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0284003Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0284870Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0285401Z                             a=1.5,
+2026-11-13T09:56:38.0285825Z                             b=2.5,
+2026-11-13T09:56:38.0286273Z                             double_output=True,
+2026-11-13T09:56:38.0286768Z                             eval_len=7,
+2026-11-13T09:56:38.0287274Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0287879Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0288813Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0290235Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0291159Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0291647Z                             report_to=[],
+2026-11-13T09:56:38.0292104Z                         )
+2026-11-13T09:56:38.0292643Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0293516Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0294082Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0294636Z                             expected = expected.float()
+2026-11-13T09:56:38.0295205Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0295698Z     
+2026-11-13T09:56:38.0296138Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0296738Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0297106Z 
+2026-11-13T09:56:38.0297335Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0297954Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0298602Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0299129Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0299655Z src/transformers/trainer.py:3052: in evaluation_loop
+2026-11-13T09:56:38.0300250Z     all_preds = all_preds.get_arrays()
+2026-11-13T09:56:38.0300737Z                 ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0301304Z src/transformers/trainer_pt_utils.py:400: in get_arrays
+2026-11-13T09:56:38.0301861Z     self.to_cpu_and_numpy()
+2026-11-13T09:56:38.0302386Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0303074Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0303902Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0304530Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0305250Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0305850Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0306432Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0307140Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0307719Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0308241Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0308672Z 
+2026-11-13T09:56:38.0308966Z tensors = tensor([3.2500, 2.2500, 3.5000, 5.0000, 2.2500, 2.2500, 5.0000],
+2026-11-13T09:56:38.0309648Z        dtype=torch.float8_e4m3fnuz)
+2026-11-13T09:56:38.0309976Z 
+2026-11-13T09:56:38.0310165Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0310824Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0311828Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0312508Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0313156Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0314163Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0315105Z     
+2026-11-13T09:56:38.0315441Z         t = tensors.cpu()
+2026-11-13T09:56:38.0315876Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0316458Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0317598Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0318707Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0319300Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0319740Z >       return t.numpy()
+2026-11-13T09:56:38.0320112Z                ^^^^^^^^^
+2026-11-13T09:56:38.0320630Z E       TypeError: Got unsupported ScalarType Float8_e4m3fnuz
+2026-11-13T09:56:38.0321083Z 
+2026-11-13T09:56:38.0321582Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0322679Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e4m3fnuz, accumulation_steps=1) _
+2026-11-13T09:56:38.0323803Z 
+2026-11-13T09:56:38.0324503Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0325395Z 
+2026-11-13T09:56:38.0325651Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0326191Z         dtypes = (
+2026-11-13T09:56:38.0326556Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0326993Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0327431Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0327872Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0328319Z             torch.bfloat16,
+2026-11-13T09:56:38.0328744Z             torch.float32,
+2026-11-13T09:56:38.0329152Z             torch.float64,
+2026-11-13T09:56:38.0329530Z         )
+2026-11-13T09:56:38.0329870Z         for dtype in dtypes:
+2026-11-13T09:56:38.0330316Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0331024Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0331804Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0332430Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0332943Z                             a=1.5,
+2026-11-13T09:56:38.0333554Z                             b=2.5,
+2026-11-13T09:56:38.0334044Z                             double_output=True,
+2026-11-13T09:56:38.0334544Z                             eval_len=7,
+2026-11-13T09:56:38.0335048Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0335684Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0336661Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0337890Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0338771Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0339277Z                             report_to=[],
+2026-11-13T09:56:38.0339735Z                         )
+2026-11-13T09:56:38.0340299Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0340985Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0341535Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0342098Z                             expected = expected.float()
+2026-11-13T09:56:38.0342661Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0343144Z     
+2026-11-13T09:56:38.0343829Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0344473Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0344850Z 
+2026-11-13T09:56:38.0345072Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0345693Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0346581Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0347118Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0347681Z src/transformers/trainer.py:3040: in evaluation_loop
+2026-11-13T09:56:38.0348267Z     all_preds.to_cpu_and_numpy()
+2026-11-13T09:56:38.0348870Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0349543Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0350057Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0350664Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0351390Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0352023Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0352857Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0353835Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0354438Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0355026Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0355546Z 
+2026-11-13T09:56:38.0355861Z tensors = tensor([3.2500, 2.2500, 3.5000], dtype=torch.float8_e4m3fnuz)
+2026-11-13T09:56:38.0356341Z 
+2026-11-13T09:56:38.0356520Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0357163Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0357898Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0358524Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0359128Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0359797Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0360453Z     
+2026-11-13T09:56:38.0360780Z         t = tensors.cpu()
+2026-11-13T09:56:38.0361192Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0361770Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0362938Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0364384Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0364994Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0365451Z >       return t.numpy()
+2026-11-13T09:56:38.0365835Z                ^^^^^^^^^
+2026-11-13T09:56:38.0366353Z E       TypeError: Got unsupported ScalarType Float8_e4m3fnuz
+2026-11-13T09:56:38.0366811Z 
+2026-11-13T09:56:38.0367066Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0368121Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e5m2, accumulation_steps=None) _
+2026-11-13T09:56:38.0368945Z 
+2026-11-13T09:56:38.0369619Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0370482Z 
+2026-11-13T09:56:38.0370732Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0371274Z         dtypes = (
+2026-11-13T09:56:38.0371639Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0372093Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0372558Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0372991Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0373710Z             torch.bfloat16,
+2026-11-13T09:56:38.0374138Z             torch.float32,
+2026-11-13T09:56:38.0374552Z             torch.float64,
+2026-11-13T09:56:38.0374938Z         )
+2026-11-13T09:56:38.0375284Z         for dtype in dtypes:
+2026-11-13T09:56:38.0375746Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0376504Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0377300Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0377913Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0378648Z                             a=1.5,
+2026-11-13T09:56:38.0379054Z                             b=2.5,
+2026-11-13T09:56:38.0379483Z                             double_output=True,
+2026-11-13T09:56:38.0379965Z                             eval_len=7,
+2026-11-13T09:56:38.0380456Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0381052Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0381962Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0383054Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0384598Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0385170Z                             report_to=[],
+2026-11-13T09:56:38.0385643Z                         )
+2026-11-13T09:56:38.0386204Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0386894Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0387430Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0388100Z                             expected = expected.float()
+2026-11-13T09:56:38.0388927Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0389611Z     
+2026-11-13T09:56:38.0390426Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0391230Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0391700Z 
+2026-11-13T09:56:38.0392088Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0393084Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0394108Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0394654Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0407171Z src/transformers/trainer.py:3052: in evaluation_loop
+2026-11-13T09:56:38.0407582Z     all_preds = all_preds.get_arrays()
+2026-11-13T09:56:38.0408092Z                 ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0408701Z src/transformers/trainer_pt_utils.py:400: in get_arrays
+2026-11-13T09:56:38.0409304Z     self.to_cpu_and_numpy()
+2026-11-13T09:56:38.0409907Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0410526Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0410829Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0411163Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0411563Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0411915Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0412247Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0412618Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0412944Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0413588Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0413924Z 
+2026-11-13T09:56:38.0414101Z tensors = tensor([3.0000, 2.5000, 3.5000, 5.0000, 2.0000, 2.0000, 5.0000],
+2026-11-13T09:56:38.0414468Z        dtype=torch.float8_e5m2)
+2026-11-13T09:56:38.0414630Z 
+2026-11-13T09:56:38.0414738Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0415103Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0415513Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0415868Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0416218Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0416618Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0416989Z     
+2026-11-13T09:56:38.0417174Z         t = tensors.cpu()
+2026-11-13T09:56:38.0417646Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0417975Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0418617Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0419262Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0419601Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0419861Z >       return t.numpy()
+2026-11-13T09:56:38.0420088Z                ^^^^^^^^^
+2026-11-13T09:56:38.0420362Z E       TypeError: Got unsupported ScalarType Float8_e5m2
+2026-11-13T09:56:38.0420592Z 
+2026-11-13T09:56:38.0420732Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0421431Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e5m2, accumulation_steps=1) _
+2026-11-13T09:56:38.0421896Z 
+2026-11-13T09:56:38.0422271Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0422747Z 
+2026-11-13T09:56:38.0422882Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0423186Z         dtypes = (
+2026-11-13T09:56:38.0423700Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0423955Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0424204Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0424443Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0424687Z             torch.bfloat16,
+2026-11-13T09:56:38.0424921Z             torch.float32,
+2026-11-13T09:56:38.0425154Z             torch.float64,
+2026-11-13T09:56:38.0425368Z         )
+2026-11-13T09:56:38.0425563Z         for dtype in dtypes:
+2026-11-13T09:56:38.0425834Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0426248Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0426707Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0427067Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0427366Z                             a=1.5,
+2026-11-13T09:56:38.0427603Z                             b=2.5,
+2026-11-13T09:56:38.0427853Z                             double_output=True,
+2026-11-13T09:56:38.0428131Z                             eval_len=7,
+2026-11-13T09:56:38.0428414Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0428757Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0429292Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0429963Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0430436Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0430720Z                             report_to=[],
+2026-11-13T09:56:38.0430980Z                         )
+2026-11-13T09:56:38.0431286Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0431654Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0431951Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0432261Z                             expected = expected.float()
+2026-11-13T09:56:38.0432578Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0432850Z     
+2026-11-13T09:56:38.0433100Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0433608Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0433820Z 
+2026-11-13T09:56:38.0433945Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0434297Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0434649Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0434945Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0435392Z src/transformers/trainer.py:3040: in evaluation_loop
+2026-11-13T09:56:38.0435711Z     all_preds.to_cpu_and_numpy()
+2026-11-13T09:56:38.0436034Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0436403Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0436690Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0437017Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0437406Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0437749Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0438079Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0438563Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0438890Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0439203Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0439443Z 
+2026-11-13T09:56:38.0439617Z tensors = tensor([3.0000, 2.5000, 3.5000], dtype=torch.float8_e5m2)
+2026-11-13T09:56:38.0439880Z 
+2026-11-13T09:56:38.0439978Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0440332Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0440722Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0441070Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0441430Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0441809Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0442174Z     
+2026-11-13T09:56:38.0442360Z         t = tensors.cpu()
+2026-11-13T09:56:38.0442603Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0442930Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0443952Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0444590Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0444920Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0445177Z >       return t.numpy()
+2026-11-13T09:56:38.0445391Z                ^^^^^^^^^
+2026-11-13T09:56:38.0445660Z E       TypeError: Got unsupported ScalarType Float8_e5m2
+2026-11-13T09:56:38.0445892Z 
+2026-11-13T09:56:38.0446027Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0446625Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e5m2fnuz, accumulation_steps=None) _
+2026-11-13T09:56:38.0447099Z 
+2026-11-13T09:56:38.0447472Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0447950Z 
+2026-11-13T09:56:38.0448081Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0448392Z         dtypes = (
+2026-11-13T09:56:38.0448605Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0448855Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0449105Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0449343Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0449586Z             torch.bfloat16,
+2026-11-13T09:56:38.0449811Z             torch.float32,
+2026-11-13T09:56:38.0450029Z             torch.float64,
+2026-11-13T09:56:38.0450241Z         )
+2026-11-13T09:56:38.0450432Z         for dtype in dtypes:
+2026-11-13T09:56:38.0450686Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0451143Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0451611Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0451973Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0452267Z                             a=1.5,
+2026-11-13T09:56:38.0452507Z                             b=2.5,
+2026-11-13T09:56:38.0452918Z                             double_output=True,
+2026-11-13T09:56:38.0453201Z                             eval_len=7,
+2026-11-13T09:56:38.0453860Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0454207Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0454740Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0455434Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0455924Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0456209Z                             report_to=[],
+2026-11-13T09:56:38.0456663Z                         )
+2026-11-13T09:56:38.0456990Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0457368Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0457677Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0457983Z                             expected = expected.float()
+2026-11-13T09:56:38.0458293Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0458571Z     
+2026-11-13T09:56:38.0458821Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0459170Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0459380Z 
+2026-11-13T09:56:38.0459504Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0459850Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0460205Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0460506Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0460807Z src/transformers/trainer.py:3052: in evaluation_loop
+2026-11-13T09:56:38.0461125Z     all_preds = all_preds.get_arrays()
+2026-11-13T09:56:38.0461389Z                 ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0461687Z src/transformers/trainer_pt_utils.py:400: in get_arrays
+2026-11-13T09:56:38.0462006Z     self.to_cpu_and_numpy()
+2026-11-13T09:56:38.0462318Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0462687Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0462984Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0463576Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0463985Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0464320Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0464647Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0465018Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0465332Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0465636Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0465877Z 
+2026-11-13T09:56:38.0466043Z tensors = tensor([3.0000, 2.5000, 3.5000, 5.0000, 2.0000, 2.0000, 5.0000],
+2026-11-13T09:56:38.0466414Z        dtype=torch.float8_e5m2fnuz)
+2026-11-13T09:56:38.0466583Z 
+2026-11-13T09:56:38.0466681Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0467037Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0467441Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0467790Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0468137Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0468518Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0468881Z     
+2026-11-13T09:56:38.0469073Z         t = tensors.cpu()
+2026-11-13T09:56:38.0469309Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0469631Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0470395Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0471007Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0471333Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0471594Z >       return t.numpy()
+2026-11-13T09:56:38.0471808Z                ^^^^^^^^^
+2026-11-13T09:56:38.0472084Z E       TypeError: Got unsupported ScalarType Float8_e5m2fnuz
+2026-11-13T09:56:38.0472333Z 
+2026-11-13T09:56:38.0472470Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0473049Z _ TrainerEvaluationTest.test_predict_preprocessed_float8_logits (dtype=torch.float8_e5m2fnuz, accumulation_steps=1) _
+2026-11-13T09:56:38.0473789Z 
+2026-11-13T09:56:38.0474176Z self = <tests.trainer.test_trainer_evaluation.TrainerEvaluationTest testMethod=test_predict_preprocessed_float8_logits>
+2026-11-13T09:56:38.0474658Z 
+2026-11-13T09:56:38.0474798Z     def test_predict_preprocessed_float8_logits(self):
+2026-11-13T09:56:38.0475101Z         dtypes = (
+2026-11-13T09:56:38.0475311Z             torch.float8_e4m3fn,
+2026-11-13T09:56:38.0475556Z             torch.float8_e4m3fnuz,
+2026-11-13T09:56:38.0475805Z             torch.float8_e5m2,
+2026-11-13T09:56:38.0476051Z             torch.float8_e5m2fnuz,
+2026-11-13T09:56:38.0476297Z             torch.bfloat16,
+2026-11-13T09:56:38.0476525Z             torch.float32,
+2026-11-13T09:56:38.0476746Z             torch.float64,
+2026-11-13T09:56:38.0476957Z         )
+2026-11-13T09:56:38.0477148Z         for dtype in dtypes:
+2026-11-13T09:56:38.0477407Z             for accumulation_steps in (None, 1):
+2026-11-13T09:56:38.0477824Z                 with self.subTest(dtype=dtype, accumulation_steps=accumulation_steps):
+2026-11-13T09:56:38.0478275Z                     with tempfile.TemporaryDirectory() as tmp_dir:
+2026-11-13T09:56:38.0478631Z                         trainer = get_regression_trainer(
+2026-11-13T09:56:38.0478915Z                             a=1.5,
+2026-11-13T09:56:38.0479142Z                             b=2.5,
+2026-11-13T09:56:38.0479389Z                             double_output=True,
+2026-11-13T09:56:38.0479663Z                             eval_len=7,
+2026-11-13T09:56:38.0479943Z                             per_device_eval_batch_size=3,
+2026-11-13T09:56:38.0480299Z                             eval_accumulation_steps=accumulation_steps,
+2026-11-13T09:56:38.0480829Z                             preprocess_logits_for_metrics=lambda logits, labels: tuple(t.to(dtype) for t in logits),
+2026-11-13T09:56:38.0481483Z                             compute_metrics=lambda output: {"prediction_mean": output.predictions[0].mean().item()},
+2026-11-13T09:56:38.0481962Z                             output_dir=tmp_dir,
+2026-11-13T09:56:38.0482240Z                             report_to=[],
+2026-11-13T09:56:38.0482496Z                         )
+2026-11-13T09:56:38.0482794Z                         raw = torch.from_numpy(1.5 * trainer.eval_dataset.x + 2.5)
+2026-11-13T09:56:38.0483164Z                         expected = raw.to(dtype)
+2026-11-13T09:56:38.0483791Z                         if dtype != torch.float64:
+2026-11-13T09:56:38.0484104Z                             expected = expected.float()
+2026-11-13T09:56:38.0484409Z                         expected = expected.numpy()
+2026-11-13T09:56:38.0484676Z     
+2026-11-13T09:56:38.0484919Z >                       output = trainer.predict(trainer.eval_dataset)
+2026-11-13T09:56:38.0485263Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0485464Z 
+2026-11-13T09:56:38.0485591Z tests/trainer/test_trainer_evaluation.py:184: 
+2026-11-13T09:56:38.0485931Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0486287Z src/transformers/trainer.py:3165: in predict
+2026-11-13T09:56:38.0486582Z     output = self.evaluation_loop(
+2026-11-13T09:56:38.0486879Z src/transformers/trainer.py:3040: in evaluation_loop
+2026-11-13T09:56:38.0487330Z     all_preds.to_cpu_and_numpy()
+2026-11-13T09:56:38.0487651Z src/transformers/trainer_pt_utils.py:387: in to_cpu_and_numpy
+2026-11-13T09:56:38.0488021Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:38.0488304Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0488627Z src/transformers/trainer_pt_utils.py:160: in nested_numpify
+2026-11-13T09:56:38.0489018Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0489354Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0489681Z src/transformers/trainer_pt_utils.py:160: in <genexpr>
+2026-11-13T09:56:38.0490045Z     return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0490363Z                          ^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:38.0490781Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-11-13T09:56:38.0491025Z 
+2026-11-13T09:56:38.0491202Z tensors = tensor([3.0000, 2.5000, 3.5000], dtype=torch.float8_e5m2fnuz)
+2026-11-13T09:56:38.0491473Z 
+2026-11-13T09:56:38.0491573Z     def nested_numpify(tensors):
+2026-11-13T09:56:38.0491924Z         "Numpify `tensors` (even if it's a nested list/tuple/dict of tensors)."
+2026-11-13T09:56:38.0492327Z         if isinstance(tensors, (list, tuple)):
+2026-11-13T09:56:38.0492680Z             return type(tensors)(nested_numpify(t) for t in tensors)
+2026-11-13T09:56:38.0493034Z         if isinstance(tensors, Mapping):
+2026-11-13T09:56:38.0493724Z             return type(tensors)({k: nested_numpify(t) for k, t in tensors.items()})
+2026-11-13T09:56:38.0494114Z     
+2026-11-13T09:56:38.0494303Z         t = tensors.cpu()
+2026-11-13T09:56:38.0494543Z         if t.dtype == torch.bfloat16:
+2026-11-13T09:56:38.0494870Z             # As of Numpy 1.21.4, NumPy does not support bfloat16 (see
+2026-11-13T09:56:38.0495499Z             # https://github.com/numpy/numpy/blob/a47ecdea856986cd60eabbd53265c2ca5916ad5d/doc/source/user/basics.types.rst ).
+2026-11-13T09:56:38.0496108Z             # Until Numpy adds bfloat16, we must convert float32.
+2026-11-13T09:56:38.0496434Z             t = t.to(torch.float32)
+2026-11-13T09:56:38.0496682Z >       return t.numpy()
+2026-11-13T09:56:38.0496899Z                ^^^^^^^^^
+2026-11-13T09:56:38.0497186Z E       TypeError: Got unsupported ScalarType Float8_e5m2fnuz
+2026-11-13T09:56:38.0497434Z 
+2026-11-13T09:56:38.0497570Z src/transformers/trainer_pt_utils.py:170: TypeError
+2026-11-13T09:56:38.0497930Z =============================== warnings summary ===============================
+2026-11-13T09:56:38.0498519Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0499244Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0499944Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0500642Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0501347Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0502050Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0502750Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0503702Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0504415Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:38.0505594Z   /home/runner/work/transformers/transformers/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+2026-11-13T09:56:38.0506981Z     super().__init__(loader)
+2026-11-13T09:56:38.0507148Z 
+2026-11-13T09:56:38.0507365Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-11-13T09:56:38.0507907Z -- generated xml file: /home/runner/work/transformers/transformers/before.xml --
+2026-11-13T09:56:38.0508385Z ================== CI READ-ONLY CACHE FALLBACK: not triggered ==================
+2026-11-13T09:56:38.0508787Z =========================== short test summary info ============================
+2026-11-13T09:56:38.0509755Z SUBFAILED(dtype=torch.float8_e4m3fn, accumulation_steps=None) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e4m3fn
+2026-11-13T09:56:38.0511412Z SUBFAILED(dtype=torch.float8_e4m3fn, accumulation_steps=1) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e4m3fn
+2026-11-13T09:56:38.0512950Z SUBFAILED(dtype=torch.float8_e4m3fnuz, accumulation_steps=None) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e4m3fnuz
+2026-11-13T09:56:38.0514801Z SUBFAILED(dtype=torch.float8_e4m3fnuz, accumulation_steps=1) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e4m3fnuz
+2026-11-13T09:56:38.0516300Z SUBFAILED(dtype=torch.float8_e5m2, accumulation_steps=None) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e5m2
+2026-11-13T09:56:38.0517789Z SUBFAILED(dtype=torch.float8_e5m2, accumulation_steps=1) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e5m2
+2026-11-13T09:56:38.0519293Z SUBFAILED(dtype=torch.float8_e5m2fnuz, accumulation_steps=None) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e5m2fnuz
+2026-11-13T09:56:38.0520819Z SUBFAILED(dtype=torch.float8_e5m2fnuz, accumulation_steps=1) tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits - TypeError: Got unsupported ScalarType Float8_e5m2fnuz
+2026-11-13T09:56:38.0521802Z ========== 8 failed, 1 passed, 9 warnings, 6 subtests passed in 3.29s ==========
+2026-11-13T09:56:38.0522091Z 
+2026-11-13T09:56:38.0522284Z before {'tests': 15, 'failures': 8, 'errors': 0, 'skipped': 0, 'returncode': 1}
+2026-11-13T09:56:44.3127448Z [transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+2026-11-13T09:56:44.3128362Z Traceback (most recent call last):
+2026-11-13T09:56:44.3135985Z   File "/home/runner/work/transformers/transformers/validation/probe_float8_predictions.py", line 23, in <module>
+2026-11-13T09:56:44.3136640Z     result = trainer.predict(rows)
+2026-11-13T09:56:44.3136920Z              ^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:44.3137482Z   File "/home/runner/work/transformers/transformers/src/transformers/trainer.py", line 3165, in predict
+2026-11-13T09:56:44.3138005Z     output = self.evaluation_loop(
+2026-11-13T09:56:44.3138262Z              ^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:44.3138786Z   File "/home/runner/work/transformers/transformers/src/transformers/trainer.py", line 3040, in evaluation_loop
+2026-11-13T09:56:44.3139315Z     all_preds.to_cpu_and_numpy()
+2026-11-13T09:56:44.3139877Z   File "/home/runner/work/transformers/transformers/src/transformers/trainer_pt_utils.py", line 387, in to_cpu_and_numpy
+2026-11-13T09:56:44.3140463Z     new_arrays = nested_numpify(self.tensors)
+2026-11-13T09:56:44.3140757Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-13T09:56:44.3141313Z   File "/home/runner/work/transformers/transformers/src/transformers/trainer_pt_utils.py", line 170, in nested_numpify
+2026-11-13T09:56:44.3142100Z     return t.numpy()
+2026-11-13T09:56:44.3142314Z            ^^^^^^^^^
+2026-11-13T09:56:44.3142592Z TypeError: Got unsupported ScalarType Float8_e4m3fn
+2026-11-13T09:56:44.3142838Z 
+2026-11-13T09:56:49.6039500Z 
+2026-11-13T09:56:49.6040462Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits 
+2026-11-13T09:56:49.6042274Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits PASSED [100%]tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits [PASSED] 0.11s
+2026-11-13T09:56:49.6043765Z 
+2026-11-13T09:56:49.6043771Z 
+2026-11-13T09:56:49.6044226Z =============================== warnings summary ===============================
+2026-11-13T09:56:49.6044917Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict_preprocessed_float8_logits
+2026-11-13T09:56:49.6046272Z   /home/runner/work/transformers/transformers/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+2026-11-13T09:56:49.6047360Z     super().__init__(loader)
+2026-11-13T09:56:49.6047539Z 
+2026-11-13T09:56:49.6047775Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-11-13T09:56:49.6048350Z -- generated xml file: /home/runner/work/transformers/transformers/after.xml ---
+2026-11-13T09:56:49.6048897Z ================== CI READ-ONLY CACHE FALLBACK: not triggered ==================
+2026-11-13T09:56:49.6049377Z =============== 1 passed, 1 warning, 14 subtests passed in 0.75s ===============
+2026-11-13T09:56:49.6049669Z 
+2026-11-13T09:56:49.6049899Z after {'tests': 15, 'failures': 0, 'errors': 0, 'skipped': 0, 'returncode': 0}
+2026-11-13T09:56:56.0292814Z [transformers] `loss_type=None` was set in the config but it is unrecognized. Using the default loss: `ForCausalLMLoss`.
+2026-11-13T09:56:56.0293941Z Default GPT2Config Trainer.predict preserved all 3 x 8 x 50257 quantized logits and metric.
+2026-11-13T09:56:56.0294329Z 
+2026-11-13T09:57:02.0349835Z 
+2026-11-13T09:57:02.0354137Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_evaluate PASSED [ 25%]tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_evaluate [PASSED] 0.03s
+2026-11-13T09:57:02.0355205Z 
+2026-11-13T09:57:02.0356055Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict PASSED [ 50%]tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict [PASSED] 0.03s
+2026-11-13T09:57:02.0356923Z 
+2026-11-13T09:57:02.0357908Z tests/trainer/test_trainer_evaluation.py::TrainerBatchEvalMetricsTest::test_evaluate_with_batch_eval_metrics PASSED [ 75%]tests/trainer/test_trainer_evaluation.py::TrainerBatchEvalMetricsTest::test_evaluate_with_batch_eval_metrics [PASSED] 0.02s
+2026-11-13T09:57:02.0359002Z 
+2026-11-13T09:57:02.0359937Z tests/trainer/test_trainer_evaluation.py::TrainerBatchEvalMetricsTest::test_predict_with_batch_eval_metrics PASSED [100%]tests/trainer/test_trainer_evaluation.py::TrainerBatchEvalMetricsTest::test_predict_with_batch_eval_metrics [PASSED] 0.03s
+2026-11-13T09:57:02.0361003Z 
+2026-11-13T09:57:02.0361008Z 
+2026-11-13T09:57:02.0361177Z =============================== warnings summary ===============================
+2026-11-13T09:57:02.0361711Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_evaluate
+2026-11-13T09:57:02.0362326Z tests/trainer/test_trainer_evaluation.py::TrainerEvaluationTest::test_predict
+2026-11-13T09:57:02.0363530Z tests/trainer/test_trainer_evaluation.py::TrainerBatchEvalMetricsTest::test_evaluate_with_batch_eval_metrics
+2026-11-13T09:57:02.0364837Z tests/trainer/test_trainer_evaluation.py::TrainerBatchEvalMetricsTest::test_predict_with_batch_eval_metrics
+2026-11-13T09:57:02.0367155Z   /home/runner/work/transformers/transformers/.venv/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+2026-11-13T09:57:02.0369166Z     super().__init__(loader)
+2026-11-13T09:57:02.0369369Z 
+2026-11-13T09:57:02.0369604Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-11-13T09:57:02.0370135Z - generated xml file: /home/runner/work/transformers/transformers/existing.xml -
+2026-11-13T09:57:02.0370631Z ================== CI READ-ONLY CACHE FALLBACK: not triggered ==================
+2026-11-13T09:57:02.0371044Z ======================== 4 passed, 4 warnings in 0.81s =========================
+2026-11-13T09:57:02.0371292Z 
+2026-11-13T09:57:02.0371487Z existing {'tests': 4, 'failures': 0, 'errors': 0, 'skipped': 0, 'returncode': 0}
+2026-11-13T09:57:02.0517998Z ##[group]Run export PATH="$PWD/.venv/bin:$PATH"
+2026-11-13T09:57:02.0518417Z [36;1mexport PATH="$PWD/.venv/bin:$PATH"[0m
+2026-11-13T09:57:02.0518700Z [36;1mmake style[0m
+2026-11-13T09:57:02.0519185Z [36;1mgit diff --exit-code -- src/transformers/trainer_pt_utils.py tests/trainer/test_trainer_evaluation.py[0m
+2026-11-13T09:57:02.0540736Z shell: /usr/bin/bash -e {0}
+2026-11-13T09:57:02.0540991Z env:
+2026-11-13T09:57:02.0541183Z   OMP_NUM_THREADS: 2
+2026-11-13T09:57:02.0541414Z   TOKENIZERS_PARALLELISM: false
+2026-11-13T09:57:02.0541687Z   PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
+2026-11-13T09:57:02.0541944Z   RUN_SLOW: 1
+2026-11-13T09:57:02.0542210Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:02.0542666Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-13T09:57:02.0543108Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:02.0543831Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:02.0544275Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:02.0544669Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-13T09:57:02.0545071Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-11-13T09:57:02.0545455Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-11-13T09:57:02.0545752Z ##[endgroup]
+2026-11-13T09:57:02.2840224Z Installing utils/checkers-requirements.txt (once per environment)
+2026-11-13T09:57:02.2841093Z   could not install: /home/runner/work/transformers/transformers/.venv/bin/python: No module named pip
+2026-11-13T09:57:02.2841814Z   continuing; a checker that needs one of these will say so
+2026-11-13T09:57:02.2842244Z Ruff linting
+2026-11-13T09:57:02.2842899Z $ ruff check examples tests src utils scripts .circleci/create_circleci_config.py benchmark_v2 setup.py conftest.py --fix --exclude 
+2026-11-13T09:57:03.6962434Z All checks passed!
+2026-11-13T09:57:03.6997737Z OK (1.42s)
+2026-11-13T09:57:03.6998081Z 
+2026-11-13T09:57:03.6998819Z Ruff formatting
+2026-11-13T09:57:03.6999989Z $ ruff format examples tests src utils scripts .circleci/create_circleci_config.py benchmark_v2 setup.py conftest.py --exclude 
+2026-11-13T09:57:05.2591952Z 5108 files left unchanged
+2026-11-13T09:57:05.2634943Z OK (1.56s)
+2026-11-13T09:57:05.2635114Z 
+2026-11-13T09:57:05.2635214Z Import ordering
+2026-11-13T09:57:05.2635470Z $ python utils/custom_init_isort.py
+2026-11-13T09:57:05.3200268Z OK (0.06s)
+2026-11-13T09:57:05.3200611Z 
+2026-11-13T09:57:05.3200815Z Sort auto mappings
+2026-11-13T09:57:05.3201225Z $ python utils/sort_auto_mappings.py
+2026-11-13T09:57:05.3608771Z OK (0.04s)
+2026-11-13T09:57:05.3609046Z 
+2026-11-13T09:57:05.3609185Z Noisy comments
+2026-11-13T09:57:05.3609683Z $ python utils/check_noisy_comments.py --fail-on-findings
+2026-11-13T09:57:07.4494673Z Restricting noisy comment scan to 64 Python file(s) changed in this patch.
+2026-11-13T09:57:08.7611089Z 
+2026-11-13T09:57:08.7612122Z Scanning [------------------------] 0/64[K
+2026-11-13T09:57:08.7613050Z Scanned [########################] 64/64 utils/check_repo.py[K
+2026-11-13T09:57:08.7624060Z Reporting owners' own comments too: the reviewer resolver is not installed (pip install -r utils/checkers-requirements.txt).
+2026-11-13T09:57:08.7625351Z No noisy comments found.
+2026-11-13T09:57:08.7729310Z OK (3.41s)
+2026-11-13T09:57:08.7729525Z 
+2026-11-13T09:57:08.7729532Z 
+2026-11-13T09:57:08.7729698Z All 5 checks passed in 6.49s.
+2026-11-13T09:57:08.7946819Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-11-13T09:57:08.7947555Z with:
+2026-11-13T09:57:08.7947907Z   name: trainer-float8-native
+2026-11-13T09:57:08.7948948Z   path: before.log
+before.xml
+after.log
+after.xml
+existing.log
+existing.xml
+default_gpt2_before.log
+default_gpt2_after.log
+validation_result.json
+
+2026-11-13T09:57:08.7950073Z   if-no-files-found: warn
+2026-11-13T09:57:08.7950487Z   compression-level: 6
+2026-11-13T09:57:08.7950862Z   overwrite: false
+2026-11-13T09:57:08.7951238Z   include-hidden-files: false
+2026-11-13T09:57:08.7951643Z   archive: true
+2026-11-13T09:57:08.7951960Z env:
+2026-11-13T09:57:08.7952270Z   OMP_NUM_THREADS: 2
+2026-11-13T09:57:08.7952646Z   TOKENIZERS_PARALLELISM: false
+2026-11-13T09:57:08.7953114Z   PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
+2026-11-13T09:57:08.7953801Z   RUN_SLOW: 1
+2026-11-13T09:57:08.7954265Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:08.7955039Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-13T09:57:08.7955784Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:08.7956487Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:08.7957158Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-13T09:57:08.7957833Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-13T09:57:08.7958607Z   UV_PYTHON_INSTALL_DIR: /home/runner/work/_temp/uv-python-dir
+2026-11-13T09:57:08.7959293Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+2026-11-13T09:57:08.7959822Z ##[endgroup]
+2026-11-13T09:57:08.9552076Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-13T09:57:08.9556141Z The least common ancestor is /home/runner/work/transformers/transformers. This will be the root directory of the artifact
+2026-11-13T09:57:08.9557086Z With the provided path, there will be 9 files uploaded
+2026-11-13T09:57:08.9561713Z Artifact name is valid!
+2026-11-13T09:57:08.9562239Z Root directory input is valid!
+2026-11-13T09:57:09.3004384Z Uploading artifact: trainer-float8-native.zip
+2026-11-13T09:57:09.3049685Z Beginning upload of artifact content to blob storage
+2026-11-13T09:57:09.5418691Z Uploaded bytes 7055
+2026-11-13T09:57:09.5933010Z Finished uploading artifact content to blob storage!
+2026-11-13T09:57:09.5934639Z SHA256 digest of uploaded artifact is c5d4cacaaf08c58c2db4ffd8c03aade9e16637f9c1ff0386e1ca83935d0c288c
+2026-11-13T09:57:09.5935934Z Finalizing artifact upload
+2026-11-13T09:57:10.0630782Z Artifact trainer-float8-native successfully finalized. Artifact ID 14026134672
+2026-11-13T09:57:10.0643409Z Artifact trainer-float8-native has been successfully uploaded! Final size is 7055 bytes. Artifact ID is 14026134672
+2026-11-13T09:57:10.0644883Z Artifact download URL: https://github.com/Afloat16/transformers/actions/runs/43404959034/artifacts/14026134672
+2026-11-13T09:57:10.0851469Z Post job cleanup.
+2026-11-13T09:57:10.2060887Z UV_CACHE_DIR is already set to /home/runner/work/_temp/setup-uv-cache
+2026-11-13T09:57:10.2064010Z UV_PYTHON_INSTALL_DIR is already set to /home/runner/work/_temp/uv-python-dir
+2026-11-13T09:57:10.2065241Z Including uv cache path: /home/runner/work/_temp/setup-uv-cache
+2026-11-13T09:57:10.2296641Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/transformers/transformers --files-from manifest.txt --use-compress-program zstdmt
+2026-11-13T09:57:15.2188917Z Sent 4829064 of 340373384 (1.4%), 4.6 MBs/sec
+2026-11-13T09:57:16.2192681Z Sent 340373384 of 340373384 (100.0%), 162.3 MBs/sec
+2026-11-13T09:57:16.5548556Z uv cache saved with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-unknown-574418ac2a9bed37de6b8ec45db2f0da604b771db3e23a1f1dba1d6f7953799a
+2026-11-13T09:57:16.6701309Z Post job cleanup.
+2026-11-13T09:57:16.8197828Z Post job cleanup.
+2026-11-13T09:57:16.9146269Z [command]/usr/bin/git version
+2026-11-13T09:57:16.9229179Z git version 2.56.0
+2026-11-13T09:57:16.9270446Z Temporarily overriding HOME='/home/runner/work/_temp/54478c82-ff82-416e-b462-90fff0bd179f' before making global git config changes
+2026-11-13T09:57:16.9271473Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-13T09:57:16.9276689Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/transformers/transformers
+2026-11-13T09:57:16.9322819Z Removing SSH command configuration
+2026-11-13T09:57:16.9330506Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-13T09:57:16.9394899Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-13T09:57:16.9684129Z Removing HTTP extra header
+2026-11-13T09:57:16.9687370Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-13T09:57:16.9728804Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-13T09:57:17.0027915Z Removing includeIf entries pointing to credentials config files
+2026-11-13T09:57:17.0035980Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-13T09:57:17.0102180Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-13T09:57:17.0539164Z Cleaning up orphan processes
