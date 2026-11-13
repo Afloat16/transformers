@@ -1,0 +1,33 @@
+{
+  "repository": "huggingface/transformers",
+  "number": 50702,
+  "url": "https://github.com/huggingface/transformers/pull/50702",
+  "head": "3bf25ca148b65b52f3c6849d86c3084205a03c5c",
+  "base": "acf8004ec93d3d3195ea4945c693ff1c8959374e",
+  "branch": "fix/cfg-negative-prompt-batch-expansion-20261113",
+  "state": "open",
+  "draft": false,
+  "merged_at": null,
+  "validation_run": 43399313262,
+  "validation_head": "2a0bdd0a80e8c22639d388978407bcd887657779",
+  "baseline": {
+    "tests": 36,
+    "failures": 18,
+    "errors": 0,
+    "skipped": 0
+  },
+  "patched": {
+    "tests": 36,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "existing": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Native tiny-GPT2 CFG multiple-returned-sample batch expansion",
+  "peer_review": "passed"
+}
