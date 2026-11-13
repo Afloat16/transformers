@@ -6,7 +6,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 BASE = "acf8004ec93d3d3195ea4945c693ff1c8959374e"
-HEAD = "2ae942fc719794c5ea5ce8c1482d8f5defff9635"
+HEAD = "3bf25ca148b65b52f3c6849d86c3084205a03c5c"
 SOURCE = "src/transformers/generation/utils.py"
 TESTS = "tests/generation/test_cfg_batch_expansion.py"
 subprocess.run(["git", "fetch", "--no-tags", "--depth=1", "origin", BASE, HEAD], check=True)
