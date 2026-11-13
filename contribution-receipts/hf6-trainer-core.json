@@ -1,0 +1,30 @@
+{
+  "repository": "huggingface/transformers",
+  "fork": "Afloat16/transformers",
+  "base": "acf8004ec93d3d3195ea4945c693ff1c8959374e",
+  "key": "hf6",
+  "branch": "fix/trainer-optimizer-group-identity-20261112",
+  "head": "d7b21da91ac1f4aae5276869762853508475ed00",
+  "title": "Resolve Trainer optimizer groups by parameter identity and name",
+  "body": "## Problem\n\n`Trainer.get_optimizer_group(parameter)` uses Python list membership, which invokes tensor equality. Looking up a matrix parameter in a later optimizer group can raise an ambiguous tensor truth-value error. Distinct scalar parameters with equal values can instead select the wrong group. The documented string-name argument is not resolved to a parameter.\n\n## Change\n\nResolve parameter names with the model's native `get_parameter` method and match group members by object identity. Preserve the existing all-groups result when the argument is omitted or a supplied parameter is not present in the optimizer.\n\n## Validation\n\nNative PyTorch 2.14.0 CPU with the repository's normal test configuration:\n\n- 16 new tests cover every weight and bias by object and name, tied parameter names, equal-valued scalar parameters, foreign parameters, and invalid names.\n- Original source: 15 failures and 1 pass. Patched source: all 16 pass; both existing optimizer-inspection tests also pass.\n- Real two-layer models run two SGD updates for float32 and float64. Setting the returned second group's learning rate to zero freezes only that layer, while the first layer continues updating.\n- Ruff 0.15.9 checks and formatting pass.\n\nExact production head: `d7b21da91ac1f4aae5276869762853508475ed00`.\nhttps://github.com/Afloat16/transformers/actions/runs/43310757498\n",
+  "validation": {
+    "run_id": 43310757498,
+    "new": 16,
+    "before_failed": 15,
+    "before_passed": 1,
+    "after_passed": 18,
+    "existing": 2
+  },
+  "merged_at": null,
+  "publication": "pull_request_created",
+  "pull_request": {
+    "number": 50700,
+    "url": "https://github.com/huggingface/transformers/pull/50700",
+    "state": "open",
+    "draft": false,
+    "head": "d7b21da91ac1f4aae5276869762853508475ed00",
+    "merged_at": null,
+    "maintainer_can_modify": false
+  },
+  "review": "Independent code and regression-test review completed"
+}

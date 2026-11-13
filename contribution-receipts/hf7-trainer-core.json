@@ -1,0 +1,30 @@
+{
+  "repository": "huggingface/transformers",
+  "fork": "Afloat16/transformers",
+  "base": "acf8004ec93d3d3195ea4945c693ff1c8959374e",
+  "key": "hf7",
+  "branch": "fix/length-grouped-tiny-distributed-datasets-20261112",
+  "head": "29f8350bd70881f6badf4a4d62d6e58cbc7b9238",
+  "title": "Pad tiny distributed length groups to every rank",
+  "body": "## Problem\n\n`DistributedLengthGroupedSampler` pads by copying its index list only once. When the dataset is smaller than half the number of ranks, this does not fill `total_size`, so iteration fails its length assertion. An explicitly empty lengths list also reaches a maximum operation on an empty tensor.\n\n## Change\n\nRepeat the shuffled length-grouped indices as many times as required to fill all ranks, following the padding behavior of PyTorch's `DistributedSampler`. Return an empty index list before grouping explicitly empty lengths. Preserve the existing ordering and `drop_last` behavior.\n\n## Validation\n\nNative PyTorch 2.14.0 CPU with the repository's normal test configuration:\n\n- 43 new tests cover dataset sizes 0, 1, 2, 3, and 7; replica counts 1, 2, 3, and 8; both `drop_last` settings; deterministic iteration across two epochs; and empty explicit lengths.\n- Original source: 15 failures and 28 passes. Patched source: all 43 pass, along with all 13 existing sampler tests.\n- A real three-process Gloo DDP job trains on one example for two epochs. Every rank completes two SGD steps, all ranks finish with identical parameters, and updates match a native single-process reference.\n- Ruff 0.15.9 checks and formatting pass.\n\nThe empty-input coverage uses `lengths=[]`; automatic length inference from an empty dataset is outside this change.\n\nExact production head: `29f8350bd70881f6badf4a4d62d6e58cbc7b9238`.\nhttps://github.com/Afloat16/transformers/actions/runs/43310764584\n",
+  "validation": {
+    "run_id": 43310764584,
+    "new": 43,
+    "before_failed": 15,
+    "before_passed": 28,
+    "after_passed": 56,
+    "existing": 13
+  },
+  "merged_at": null,
+  "publication": "pull_request_created",
+  "pull_request": {
+    "number": 50701,
+    "url": "https://github.com/huggingface/transformers/pull/50701",
+    "state": "open",
+    "draft": false,
+    "head": "29f8350bd70881f6badf4a4d62d6e58cbc7b9238",
+    "merged_at": null,
+    "maintainer_can_modify": false
+  },
+  "review": "Independent code and regression-test review completed"
+}
